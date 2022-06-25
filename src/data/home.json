@@ -1,0 +1,45 @@
+{
+     "landing": {
+          "title": "Best Hotel in Canoa Beach",
+          "description": "Experience wonderful views, delicious food and outstanding comfort at the heart of Canoa village with La Vista hotel.",
+          "buttonText": "VIEW GALLERY"
+     },
+     "ourRooms": {
+          "title": "Our Rooms",
+          "description": "All of our rooms provide direct views to the beach and the town of Canoa. Each room is equipped with a private bathroom, television, and airconditioning. The rooms are cleaned daily and fresh linen is provided everyday.",
+          "buttonText": "MORE INFORMATION"
+     },
+     "aboutUs": {
+          "title": "About Us",
+          "description": "Hotel La Vista is located in front of the beach, in the outskirts of Canoa village. It is walking distance away from the \"action\", while being far enough away to avoid the noise from bars and people at night. The hotel is built in modern materials, with comfort in mind. Yet, the use of wooden beams, bamboo and thatch roofs, gives the structure a traditional touch, that adds to integrate it with local \"old fashion\" building style.",
+          "buttonText": "FIND OUT MORE"
+     },
+     "itemOne": {
+          "title": "Our Facilities",
+          "description": "Our hotel is equipped with a gorgeous roof terrace with a 360 degree view on all of canoa. We have a brand new swimming pool, free wifi, swings, hammocks and much more. Outside of the hotel you will also find a vast selection of daily activities to do alone or with your family.",
+          "buttonText": "GO TO FACILITIES"
+     },
+     "itemTwo": {
+          "title": "Our Restaurant",
+          "description": "The restaurant/café/bar is located in front of the hotel, with views of the beach. There are also tables and chairs in the garden to eat or drink.\nThe restaurant has a selection of fish, shrimp, lobster prepared in the typical way of the area, or international food like pasta and steaks. The restaurant is open only in high session.",
+          "buttonText": "GO TO RESTAURANT"
+     },
+     "contactUs": {
+          "title": "Contact Us",
+          "textContact": [
+               "Email: lavistacanoa@gmail.com",
+               "Phone: 052-588-106/ +593 52 588 106"
+          ],
+          "subheading": "Or reserve through other booking websites",
+          "buttons": [
+               {
+                    "text": "Airbnb",
+                    "link": "https://airbnb.com"
+               },
+               {
+                    "text": "Booking.com",
+                    "link": "https://booking.com"
+               }
+          ]
+     }
+}

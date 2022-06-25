@@ -1,0 +1,105 @@
+// Imports
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+// Variables
+$desktop_width: 1200px;
+$primary_color: #4E92B0;
+$secondary_color: #EC9A3A;
+$light_grey: #F3F3F3;
+
+// Global settings
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+#root {
+    margin: 0;
+}
+
+html,body{
+    overflow-x: hidden;
+}
+
+.hidden {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+// Content scaling
+.block-content-width {
+    width: 1200px;
+}
+@media (max-width: 1240px) {
+    .block-content-width {
+        width: 90%;
+    } 
+}
+@media (max-width: 1060px) {
+    .block-content-width {
+        width: 800px;
+    } 
+}
+@media (max-width: 840px) {
+    .block-content-width {
+        width: 90%;
+    } 
+}
+
+.scale-content-width {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// Button
+.btn {
+    padding: 15px 30px;
+    background-color: $primary_color;
+    width: fit-content;
+    font-size: 14px;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+    transition: opacity 100ms ease-in-out;
+    font-weight: 300;
+    color: white;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-primary {
+    background-color: $primary_color;
+}
+
+.btn-secondary {
+    background-color: $secondary_color;
+}
+
+.btn-large {
+    padding: 20px 40px;
+    font-size: 18px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+// Input box
+.input {
+    padding: 12px;
+    font-size: 1rem;
+    background-color: white;
+    border: 1px rgb(218, 218, 218) solid;
+
+}
+
+.input-large {
+    padding: 18px;
+    font-size: 1.2rem;
+}
