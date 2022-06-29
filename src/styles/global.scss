@@ -32,6 +32,10 @@ html,body{
 // Content scaling
 .block-content-width {
     width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 @media (max-width: 1240px) {
     .block-content-width {
