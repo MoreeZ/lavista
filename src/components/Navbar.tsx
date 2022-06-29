@@ -24,18 +24,18 @@ const links: Array<NavLink> = [
 
 export default function Navbar(props: Props) {
   const [isOpen, setOpen] = useState<boolean>(false);
-  const {dataJson} = useStaticQuery(graphql`
-    query LogoQuery {
-      allImageSharp(filter: {fluid: {originalName: {eq: "icon.png"}}}) {
-        nodes {
-          fluid {
-            originalName
-            base64
-          }
-        }
-      }
-    }
-  `)
+  // const {dataJson} = useStaticQuery(graphql`
+  //   query LogoQuery {
+  //     allImageSharp(filter: {fluid: {originalName: {eq: "icon.png"}}}) {
+  //       nodes {
+  //         fluid {
+  //           originalName
+  //           base64
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
   useEffect(()=>{
     const htmlElem = document.querySelector('html');
@@ -50,7 +50,6 @@ export default function Navbar(props: Props) {
       }
     }
   },[isOpen])
-  console.log(dataJson);
   return (
     <div className='navbar'>
       <div className='nav-container'>
@@ -69,13 +68,13 @@ export default function Navbar(props: Props) {
         </div>
         <div className='nav-right'>
           {props.windowWidth.current > 800 &&
-            links && links.map((link) => (
-              <div className='nav-link-box'>
+            links && links.map((link, index) => (
+              <div className='nav-link-box' key={index}>
                 <a href={link.to} className={props.currentPath === link.to || props.currentPath === link.to + "/" ? "active-link" : ""}>
                   {link.text}
                 </a>
-                {link.dropdownList && link.dropdownList.map(link2 => (
-                  <div className='nav-link-box dropdown-link'>
+                {link.dropdownList && link.dropdownList.map((link2, index) => (
+                  <div className='nav-link-box dropdown-link' key={index}>
                     <a href={link2.to} className={props.currentPath === link2.to || props.currentPath === link2.to + "/" ? "active-link" : ""}>
                       {link2.text}
                     </a>
@@ -87,8 +86,8 @@ export default function Navbar(props: Props) {
         {props.windowWidth.current <= 800 &&
           <div id="nav-dropdown" className={'nav-dropdown ' + (isOpen ? "" : "hidden")}>
             {
-              links && links.map((link) => (
-                <div className='nav-dropdown-link'>
+              links && links.map((link, index) => (
+                <div className='nav-dropdown-link' key={index}>
                   <a key={link.to} href={link.to} className={props.currentPath === link.to || props.currentPath === link.to + "/" ? "active-link" : ""}>
                     {link.text}
                   </a>
