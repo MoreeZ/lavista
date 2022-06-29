@@ -3,7 +3,7 @@ import Layout from "../components/Layout"
 // import elephantDemo from '../images/elephant-demo.jpg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useStaticQuery, graphql, GatsbyGraphQLType, GatsbyGraphQLObjectType } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 
 type BasicDataType = {
@@ -67,7 +67,7 @@ const AboutUsBlock = (props: { data: BasicDataType }) => (
 const FacilitiesBlock = (props: { data: BasicDataType, image: IGatsbyImageData }) => (
   <div className='scale-content-width rsc-container'>
     <div className="rsc-left" data-aos="fade-right">
-        <GatsbyImage image={props.image} alt={"Facilities image unavailable..."} />
+      <GatsbyImage image={props.image} alt={"Facilities image unavailable..."} />
     </div>
     <div className="rsc-right">
       <div className='rsc-heading' data-aos="fade-left">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
@@ -85,7 +85,7 @@ const RestaurantBlock = (props: { data: BasicDataType, image: IGatsbyImageData }
       <a href="/resources" className="of-button btn btn-large" data-aos="fade-right">{props.data && props.data.buttonText && props.data.buttonText !== null && props.data.buttonText}</a>
     </div>
     <div className="of-right" data-aos="fade-left">
-        <GatsbyImage image={props.image} alt={"Restaurant image unavailable..."} />
+      <GatsbyImage image={props.image} alt={"Restaurant image unavailable..."} />
     </div>
   </div>
 )
@@ -109,7 +109,7 @@ const ContactUsBlock = (props: { data: ContactDataType }) => (
 
 const IndexPage = () => {
   // const dataJson = {};
-  const { dataJson, allFile } = useStaticQuery(graphql`
+  const { dataJson, homeImages } = useStaticQuery(graphql`
     query HomeQuery {
       dataJson {
         landing {
@@ -147,7 +147,7 @@ const IndexPage = () => {
           }
         }
       }
-      allFile(filter: {relativeDirectory: {eq: "home"}}) {
+      homeImages: allFile(filter: {relativeDirectory: {eq: "home"}}) {
         edges {
           node {
             relativePath
@@ -164,26 +164,30 @@ const IndexPage = () => {
     AOS.init({ duration: 600 });
   }, [])
 
-  console.log(allFile.edges)
+  console.log(homeImages.edges)
 
   const getImageFromPath = (path: string) => {
-    try {
-      const imageData = allFile.edges.find((edge: { node: { relativePath: any; }; }) => (edge.node.relativePath === path)).node.childImageSharp.gatsbyImageData;
-      console.log(imageData)
-      return imageData;
-    } catch (err) {
-      console.log(err);
-      return null;
+    const extensions = [".jpg", ".png", ".jpeg"]
+    for (let i = 0; i < extensions.length; i++) {
+      try {
+        const imageData = homeImages.edges.find((edge: { node: { relativePath: string; }; }) => {
+          return edge.node.relativePath === path + extensions[i]
+        }).node.childImageSharp.gatsbyImageData;
+        return imageData;
+      } catch (err) {
+        console.log("Could not find image with path " + path + extensions[i])
+      }
     }
+    return null;
   }
 
   return (
     <Layout hasNavbar hasFooter>
       <WelcomeBlock data={dataJson.landing} />
-      <RoomsBlock data={dataJson.ourRooms} image={getImageFromPath("home/rooms.jpg")} />
+      <RoomsBlock data={dataJson.ourRooms} image={getImageFromPath("home/rooms")} />
       <AboutUsBlock data={dataJson.aboutUs} />
-      <FacilitiesBlock data={dataJson.itemOne} image={getImageFromPath("home/facilities.jpg")}/>
-      <RestaurantBlock data={dataJson.itemTwo} image={getImageFromPath("home/restaurant.jpg")}/>
+      <FacilitiesBlock data={dataJson.itemOne} image={getImageFromPath("home/facilities")} />
+      <RestaurantBlock data={dataJson.itemTwo} image={getImageFromPath("home/restaurant")} />
       <ContactUsBlock data={dataJson.contactUs} />
     </Layout>
   )
