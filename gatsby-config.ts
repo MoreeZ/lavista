@@ -25,14 +25,6 @@ const config: GatsbyConfig = {
     },
     __key: "data"
   },
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "homeImages",
-      "path": "./src/images/home/"
-    },
-    __key: "homeImages"
-  },
   'gatsby-transformer-json']
 };
 
