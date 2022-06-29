@@ -1,3 +1,56 @@
-{
-    
-}
+[
+    {
+        "title": "Double Bedroom",
+        "description": "We can accommodate 1-2 persons in our double room (queen size bed). The room has air condition and satellite TV, a private bathroom with hot water, private balcony with chairs, a hammock and beach views.",
+        "price": "$40",
+        "utilities": [
+            "air conditioning",
+            "satellite TV",
+            "private bathroom",
+            "hot water",
+            "balcony",
+            "hammocks access",
+            "beach views"
+        ],
+        "button": {
+            "text": "RESERVE NOW",
+            "link": "https://www.airbnb.ie/rooms/9506334"
+        }
+    },
+    {
+        "title": "Family Bedroom",
+        "description": "We can accommodate 1-4 persons in our family rooms (matrimonial bed and bunk bed). The room has air condition and satellite TV, a private bathroom with hot water, private balcony with chairs, a hammock and beach views.",
+        "price": "$40",
+        "utilities": [
+            "air conditioning",
+            "satellite TV",
+            "private bathroom",
+            "hot water",
+            "private balcony",
+            "private hammock",
+            "beach views"
+        ],
+        "button": {
+            "text": "RESERVE NOW",
+            "link": "https://www.airbnb.ie/rooms/19807843"
+        }
+    },
+    {
+        "title": "Penthouse Suite",
+        "description": "We can accommodate 1-4 persons in our penthouse suite (double queen size bed and 2 single beds). The room has air condition and satellite TV, a living room and small kitchen space, private bathroom with hot water, private balcony with chairs, hammocks and beach views.",
+        "price": "$80",
+        "utilities": [
+            "air conditioning",
+            "satellite TV",
+            "private bathroom",
+            "hot water",
+            "private balcony",
+            "private hammock",
+            "beach views"
+        ],
+        "button": {
+            "text": "RESERVE NOW",
+            "link": "https://www.airbnb.ie/rooms/19808883"
+        }
+    }
+]
