@@ -6,7 +6,8 @@ import "../../gatsby-browser.js"
 
 export interface ILayoutProps {
   hasNavbar?: boolean,
-  hasFooter?: boolean
+  hasFooter?: boolean,
+  backgroundColor?: string
 }
 
 export default function Layout(props: React.PropsWithChildren<ILayoutProps>) {
@@ -32,7 +33,7 @@ export default function Layout(props: React.PropsWithChildren<ILayoutProps>) {
     }
   }, []);
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: props.backgroundColor }}>
       {props.hasNavbar && <Navbar currentPath={currentPath} windowWidth={windowWidth} />}
       <div className='page-content'>
         {props.children}
