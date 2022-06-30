@@ -3,13 +3,13 @@ import Layout from "../components/Layout"
 // import elephantDemo from '../images/elephant-demo.jpg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 
 type BasicDataType = {
   title: string,
   description: string,
-  buttonText: string
+  button: ButtonType
 }
 
 type ContactDataType = {
@@ -33,7 +33,7 @@ const WelcomeBlock = (props: { data: BasicDataType }) => (
       <div className="subheading" data-aos="fade-up" data-aos-delay="200">
         {props.data && props.data.description && props.data.description !== null && props.data.description}
       </div>
-      <a href="#" className="btn btn-large btn-secondary" data-aos="fade-up" data-aos-delay="400">{props.data && props.data.buttonText && props.data.buttonText !== null && props.data.buttonText}</a>
+      <Link target="_blank" to={props.data.button.link} className="btn btn-large btn-secondary" data-aos="fade-up" data-aos-delay="400">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
     </div>
     <div className="welcome-darken"></div>
   </div>
@@ -45,7 +45,7 @@ const RoomsBlock = (props: { data: BasicDataType, image: IGatsbyImageData }) => 
       <div className="og-left">
         <div className='og-heading' data-aos="fade-right">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
         <div className='og-desc' data-aos="fade-right">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
-        <a href="/grinds-info" className="og-button btn btn-large" data-aos="fade-right">{props.data && props.data.buttonText && props.data.buttonText !== null && props.data.buttonText}</a>
+        <Link target="_blank" to={props.data.button.link} className="og-button btn btn-large" data-aos="fade-right">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
       </div>
       <div className="og-right" data-aos="fade-left">
         <GatsbyImage image={props.image} alt={"Rooms image unavailable..."} />
@@ -59,7 +59,7 @@ const AboutUsBlock = (props: { data: BasicDataType }) => (
     <div className="block-content-width au-content">
       <div className="au-heading" data-aos="fade-up">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
       <div className="au-desc" data-aos="fade-up">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
-      <a href="/about-us" className="au-button btn btn-secondary btn-large" data-aos="fade-up">{props.data && props.data.buttonText && props.data.buttonText !== null && props.data.buttonText}</a>
+      <Link target="_blank" to={props.data.button.link} className="au-button btn btn-secondary btn-large" data-aos="fade-up">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
     </div>
   </div>
 
@@ -73,7 +73,7 @@ const FacilitiesBlock = (props: { data: BasicDataType, image: IGatsbyImageData }
     <div className="rsc-right">
       <div className='rsc-heading' data-aos="fade-left">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
       <div className='rsc-desc' data-aos="fade-left">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
-      <a href="/resources" className="rsc-button btn btn-large" data-aos="fade-left">{props.data && props.data.buttonText && props.data.buttonText !== null && props.data.buttonText}</a>
+      <Link target="_blank" to={props.data.button.link} className="rsc-button btn btn-large" data-aos="fade-left">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
     </div>
   </div>
 )
@@ -83,7 +83,7 @@ const RestaurantBlock = (props: { data: BasicDataType, image: IGatsbyImageData }
     <div className="of-left">
       <div className='of-heading' data-aos="fade-right">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
       <div className='of-desc' data-aos="fade-right">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
-      <a href="/resources" className="of-button btn btn-large" data-aos="fade-right">{props.data && props.data.buttonText && props.data.buttonText !== null && props.data.buttonText}</a>
+      <Link target="_blank" to={props.data.button.link} className="of-button btn btn-large" data-aos="fade-right">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
     </div>
     <div className="of-right" data-aos="fade-left">
       <GatsbyImage image={props.image} alt={"Restaurant image unavailable..."} />
@@ -103,7 +103,7 @@ const ContactUsBlock = (props: { data: ContactDataType }) => (
       {props.data && props.data.subheading && props.data.subheading !== null && props.data.subheading}
     </div>
     <div className="ib-row" data-aos="fade-up">
-      {props.data && props.data.buttons && props.data.buttons !== null && props.data.buttons.map((btnObj) => (<a key={btnObj.text} className="ib-row btn btn-large btn-secondary" data-aos="fade-up" href={btnObj.link}>{btnObj.text && btnObj.text}</a>))}
+      {props.data && props.data.buttons && props.data.buttons !== null && props.data.buttons.map((btnObj) => (<Link target="_blank" key={btnObj.text} className="ib-row btn btn-large btn-secondary" data-aos="fade-up" to={btnObj.link}>{btnObj.text && btnObj.text}</Link>))}
     </div>
   </form>
 )
@@ -118,27 +118,42 @@ const IndexPage = () => {
           landing {
             title
             description
-            buttonText
+            button {
+              text
+              link
+            }
           }
           ourRooms {
             title
             description
-            buttonText
+            button {
+              text
+              link
+            }
           }
           aboutUs {
             title
             description
-            buttonText
+            button {
+              text
+              link
+            }
           }
           itemOne {
             title
             description
-            buttonText
+            button {
+              text
+              link
+            }
           }
           itemTwo {
             title
             description
-            buttonText
+            button {
+              text
+              link
+            }
           }
           contactUs {
             title
@@ -168,8 +183,6 @@ const IndexPage = () => {
   React.useEffect(() => {
     AOS.init({ duration: 600 });
   }, [])
-
-  console.log(homeData)
 
   const getImageFromPath = (path: string) => {
     const extensions = [".jpg", ".png", ".jpeg"]

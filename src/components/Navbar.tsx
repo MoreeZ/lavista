@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Squash as Hamburger } from 'hamburger-react'
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 interface NavLink {
@@ -14,7 +14,7 @@ const links: Array<NavLink> = [
   { text: "Home", to: "" },
   { text: "Rooms", to: "/rooms" },
   { text: "Restaurant", to: "/restaurant" },
-  { text: "Services and Activities", to: "/services-and-activites" },
+  { text: "Services and Activities", to: "/services-and-activities" },
   { text: "Reservation", to: "/reservation" },
 ]
 
@@ -84,9 +84,9 @@ export default function Navbar() {
       <div className='nav-container'>
         <div className='nav-left'>
           {windowWidth > 800 ?
-            <a href='/' className='nav-logo'>
+            <Link to='/' className='nav-logo'>
               <GatsbyImage image={logoImages.edges[0].node.childImageSharp.gatsbyImageData} alt="La Vista" />
-              </a>
+              </Link>
             :
             <Hamburger size={30} color="white" toggle={setOpen} toggled={isOpen} />
 
@@ -94,23 +94,23 @@ export default function Navbar() {
         </div>
         <div className='nav-center'>
           {windowWidth <= 800 &&
-            <a className='nav-logo' href='/'>
+            <Link className='nav-logo' to='/'>
               <GatsbyImage image={logoImages.edges[0].node.childImageSharp.gatsbyImageData} alt="La Vista" />
-              </a>
+              </Link>
           }
         </div>
         <div className='nav-right'>
           {windowWidth > 800 &&
             links && links.map((link, index) => (
               <div className='nav-link-box' key={index}>
-                <a href={link.to === "" ? "/" : link.to} className={currentPath === link.to || currentPath === link.to + "/" ? "active-link" : ""}>
+                <Link to={link.to === "" ? "/" : link.to} className={currentPath === link.to || currentPath === link.to + "/" ? "active-link" : ""}>
                   {link.text}
-                </a>
+                </Link>
                 {link.dropdownList && link.dropdownList.map((link2, index) => (
                   <div className='nav-link-box dropdown-link' key={index}>
-                    <a href={link2.to} className={currentPath === link2.to || currentPath === link2.to + "/" ? "active-link" : ""}>
+                    <Link to={link2.to} className={currentPath === link2.to || currentPath === link2.to + "/" ? "active-link" : ""}>
                       {link2.text}
-                    </a>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -121,9 +121,9 @@ export default function Navbar() {
             {
               links && links.map((link, index) => (
                 <div className='nav-dropdown-link' key={index}>
-                  <a key={link.to} href={link.to === "" ? "/" : link.to} className={currentPath === link.to || currentPath === link.to + "/" ? "active-link" : ""}>
+                  <Link key={link.to} to={link.to === "" ? "/" : link.to} className={currentPath === link.to || currentPath === link.to + "/" ? "active-link" : ""}>
                     {link.text}
-                  </a>
+                  </Link>
                 </div>
               ))}
           </div>}

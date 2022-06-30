@@ -2,27 +2,43 @@
      "landing": {
           "title": "Best Hotel in Canoa Beach",
           "description": "Experience wonderful views, delicious food and outstanding comfort at the heart of Canoa village with La Vista hotel.",
-          "buttonText": "VIEW GALLERY"
+          "button": {
+              "text": "RESERVE NOW",
+              "link": "/reservation"
+          }
      },
      "ourRooms": {
           "title": "Our Rooms",
           "description": "All of our rooms provide direct views to the beach and the town of Canoa. Each room is equipped with a private bathroom, television, and airconditioning. The rooms are cleaned daily and fresh linen is provided everyday.",
-          "buttonText": "MORE INFORMATION"
+          "button": {
+              "text": "MORE INFORMATION",
+              "link": "/rooms"
+          }
      },
      "aboutUs": {
           "title": "About Us",
           "description": "Hotel La Vista is located in front of the beach, in the outskirts of Canoa village. It is walking distance away from the \"action\", while being far enough away to avoid the noise from bars and people at night. The hotel is built in modern materials, with comfort in mind. Yet, the use of wooden beams, bamboo and thatch roofs, gives the structure a traditional touch, that adds to integrate it with local \"old fashion\" building style.",
-          "buttonText": "FIND OUT MORE"
+          "buttonText": "FIND OUT MORE",
+          "button": {
+               "text": "FIND OUT MORE",
+               "link": "https://www.tripadvisor.com/Hotel_Review-g1023820-d1837127-Reviews-La_Vista_Hotel-Canoa_Manabi_Province.html"
+           }
      },
      "itemOne": {
           "title": "Our Facilities",
           "description": "Our hotel is equipped with a gorgeous roof terrace with a 360 degree view on all of canoa. We have a brand new swimming pool, free wifi, swings, hammocks and much more. Outside of the hotel you will also find a vast selection of daily activities to do alone or with your family.",
-          "buttonText": "GO TO FACILITIES"
+          "button": {
+              "text": "GO TO FACILITIES",
+              "link": "/services-and-activities"
+          }
      },
      "itemTwo": {
           "title": "Our Restaurant",
           "description": "The restaurant/café/bar is located in front of the hotel, with views of the beach. There are also tables and chairs in the garden to eat or drink.\nThe restaurant has a selection of fish, shrimp, lobster prepared in the typical way of the area, or international food like pasta and steaks. The restaurant is open only in high session.",
-          "buttonText": "GO TO RESTAURANT"
+          "button": {
+              "text": "GO TO RESTAURANT",
+              "link": "/restaurant"
+          }
      },
      "contactUs": {
           "title": "Contact Us",

@@ -28,9 +28,9 @@
             font-weight: 400;
             line-height: 1.5rem;
             margin-bottom: 25px;
-            color:rgb(21, 21, 21);
+            color: rgb(21, 21, 21);
         }
-        
+
         .room-price {
             font-size: 1.4rem;
             font-weight: 500;
@@ -91,17 +91,17 @@
             justify-content: center;
         }
     }
-    
+
     * {
         text-align: center;
     }
 }
 
 @media (max-width: 1300px) {
-    .room-container{
+    .room-container {
         .room-right {
             min-width: 400px;
-    
+
             img {
                 height: 100%;
             }
@@ -148,9 +148,109 @@
     }
 }
 
+// ======= Carousel ==============================================
+.carousel-container {
+    $carouselHeight: 35vw;
+    $carouselMinHeight: 400px;
+    width: 100%;
+    height: $carouselHeight;
+    min-height: $carouselMinHeight;
+
+    .carousel-render-space {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: $carouselHeight;
+        min-height: $carouselMinHeight;
+        width: 100%;
+        position: relative;
+        
+        .text-space {
+            position: absolute;
+            z-index: 10;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            width: 70%;
+
+            .heading {
+                font-size: 5vw;
+                margin-bottom: 40px;
+                font-weight: bold;
+                width: 100%;
+            }
+
+            .subheading {
+                font-size: 1.5rem;
+                margin-bottom: 40px;
+                font-weight: 300;
+                line-height: 2.3rem;
+            }
+        }
+
+        @media(max-width: 800px) {
+            .text-space {
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .heading {
+                    font-size: 2.5rem;
+                    margin-bottom: 40px;
+                }
+
+                .subheading {
+                    font-size: 1rem;
+                    line-height: 1.6rem;
+                }
+            }
+        }
+
+        .image-container {
+            width: 100%;
+            height: $carouselHeight;
+            min-height: $carouselMinHeight;
+            cursor: pointer;
+
+            img {
+                width: 100%;
+                height: $carouselHeight;
+                min-height: $carouselMinHeight;
+                opacity: 1;
+                pointer-events: all;
+                border: rgb(5, 5, 5) 2px block;
+            }
+
+            .img:hover {
+                opacity: 0.8;
+            }
+        }
+
+        .bg-dim {
+            position: absolute;
+            background-color: rgba($color: #081119, $alpha: 0.7);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: $carouselHeight;
+            min-height: $carouselMinHeight;
+            z-index: 9;
+            pointer-events: none;
+        }
+
+    }
+}
+
+// ==== Gallery ========================================
+
 // ======= Gallery ================
 .gallery-container {
-    $galleryHeight: 260px;
+    $galleryHeight: 100px;
     // max-height: $galleryHeight;
     padding: 50px 0px;
 
@@ -184,21 +284,11 @@
                 border: rgb(5, 5, 5) 2px block;
             }
 
-            .expanded {
-                position: fixed;
-                top: 10%;
-                left: 25%;
-                transform: translateX(50%);
-                width: 80vh;
-                height: 80vh;
-                animation: galleryImageFadeIn 400ms ease-in-out 1 forwards;;
-                // pointer-events: none;
-            }
-
             .img:hover {
                 opacity: 0.8;
             }
         }
+
         .bg-dim {
             position: fixed;
             background-color: rgba($color: #000000, $alpha: 0.5);
@@ -210,26 +300,28 @@
             z-index: 11111111 !important;
             pointer-events: all;
         }
-        
+
     }
 }
 
 @keyframes galleryImageFadeIn {
-    0%{
+    0% {
         opacity: 0;
         transform: scale(0);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: scale(1);
     }
 }
 
 @keyframes galleryBgFadeIn {
-    0%{
+    0% {
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }

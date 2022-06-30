@@ -53,7 +53,7 @@ const Menu = (props: { menu: MenuType[] }) => {
                 {
                     props.menu.map((submenu, index) => {
                         return (
-                            <div className='each-submenu' key={index}>
+                            <div className='each-submenu' data-aos="fade-up" key={index}>
                                 <div className='submenu-heading'>{submenu.subheading}</div>
                                 <table className='submenu-render-space'>
                                     <tr>
