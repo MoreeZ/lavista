@@ -144,6 +144,10 @@ const IndexPage = () => {
             title
             subheading
             textContact
+            buttons {
+              link
+              text
+            }
           }
         }
       }
