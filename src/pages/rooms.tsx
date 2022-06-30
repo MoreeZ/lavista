@@ -20,30 +20,55 @@ type RoomType = {
 }
 
 
-const EachRoom = (props: { data: RoomType, index: number, image: IGatsbyImageData }) => {
-    props.image.height = 600;
-    return (
-        <div className='scale-content-width' style={{ backgroundColor: "white" }}>
-            <div className={'room-container'}>
-                <div className={"room-left"}>
-                    <div className='room-heading' data-aos="fade-right">{props.data.title}</div>
-                    <div className='room-desc' data-aos="fade-right">{props.data.description}</div>
-                    <div className='room-price' data-aos="fade-right">Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
-                    <div className='utilities-container' data-aos="fade-right">{
-                        props.data.utilities && props.data.utilities.map((util)=>{
-                            return (
-                                <span className='utility' key={util}>{util}</span>
-                            )
-                        })
-                    }</div>
-                    <a href={props.data.button.link} className={"room-button btn"} data-aos="fade-right">{props.data.button?.text}</a>
-                </div>
-                <div className={"room-right"} data-aos="fade-left">
-                    <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} />
+const EachRoom = (props: { data: RoomType, index: number, image: IGatsbyImageData, reverse: boolean }) => {
+    if (!props.reverse) {
+        return (
+            <div className='scale-content-width' style={{ backgroundColor: "white" }}>
+                <div className={'room-container'}>
+                    <div className={"room-left"}>
+                        <div className='room-heading' data-aos="fade-right">{props.data.title}</div>
+                        <div className='room-price' data-aos="fade-right">Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
+                        <div className='utilities-container' data-aos="fade-right">{
+                            props.data.utilities && props.data.utilities.map((util)=>{
+                                return (
+                                    <span className='utility' key={util}>{util}</span>
+                                )
+                            })
+                        }</div>
+                        <div className='room-desc' data-aos="fade-right">{props.data.description}</div>
+                        <a href={props.data.button.link} className={"room-button btn btn-large"} data-aos="fade-right">{props.data.button?.text}</a>
+                    </div>
+                    <div className={"room-right"} data-aos="fade-left">
+                        <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} />
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className='scale-content-width' style={{ backgroundColor: "white" }}>
+                <div className={'room-container room-container-reverse'}>
+                    <div className={"room-left"}>
+                        <div className='room-heading' data-aos="fade-left">{props.data.title}</div>
+                        <div className='room-price' data-aos="fade-left">Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
+                        <div className='utilities-container' data-aos="fade-left">{
+                            props.data.utilities && props.data.utilities.map((util)=>{
+                                return (
+                                    <span className='utility' key={util}>{util}</span>
+                                )
+                            })
+                        }</div>
+                        <div className='room-desc' data-aos="fade-left">{props.data.description}</div>
+                        <a href={props.data.button.link} className={"room-button btn btn-large"} data-aos="fade-left">{props.data.button?.text}</a>
+                    </div>
+                    <div className={"room-right"} data-aos="fade-right">
+                        <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    
 }
 
 const ImageGallery = (props: { galleryImages: any | null, path: string }) => {
@@ -57,7 +82,6 @@ const ImageGallery = (props: { galleryImages: any | null, path: string }) => {
                 <div className='gallery-render-space'>
                     {
                         filteredImages && filteredImages !== null && filteredImages.map((edge: any, index: number) => {
-                            console.log(edge);
                             return (
                                 <div key={index} className='image-container' data-aos="fade-in" data-aos-delay={100 * index} onClick={handleFullscreenImg}>
                                     <div className=''>
@@ -77,7 +101,6 @@ const handleFullscreenImg = (e: any) => {
     const dimElement = e.currentTarget.children[0];
     const imageElement = e.currentTarget.children[0].children[0].children[2].children[2];
     const htmlElem = document.querySelector('html');
-    console.log(dimElement)
     if (dimElement.className === 'bg-dim') {
         imageElement.className = '';
         dimElement.className = '';
@@ -170,11 +193,11 @@ const Rooms = () => {
     }
 
     return (
-        <Layout hasNavbar hasFooter backgroundColor={"#ececec"}>
+        <Layout hasNavbar hasFooter backgroundColor={"#f7f7f7"}>
             {
                 roomsData && roomsData.edges && roomsData.edges !== null && roomsData.edges.map((roomEdge: any, index: number) => (
                     <div key={index}>
-                        <EachRoom data={roomEdge.node} image={getImageFromPath("rooms/" + (index + 1) + "_")} index={index} />
+                        <EachRoom data={roomEdge.node} image={getImageFromPath("rooms/" + (index + 1) + "_")} index={index} reverse={index%2===1} />
                         <ImageGallery galleryImages={galleryImages} path={"rooms/" + (index + 1) + "_"} />
                     </div>
                 ))
