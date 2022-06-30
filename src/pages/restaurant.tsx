@@ -83,10 +83,10 @@ const Menu = (props: { menu: MenuType[] }) => {
 const Restaurant = () => {
     const { restaurantData, restaurantImages } = useStaticQuery(graphql`
     query RestaurantQuery {
-        restaurantData: allDataJson (filter:{details:{title:{ne:null}}}){
+        restaurantData: allDataJson (filter:{restaurant_details:{title:{ne:null}}}){
             edges {
               node {
-                details {
+                restaurant_details {
                   title
                   description_main
                   description_par1
@@ -112,7 +112,7 @@ const Restaurant = () => {
 
     return (
         <Layout hasNavbar hasFooter>
-            <Details details={restaurantData.edges[0].node.details} />
+            <Details details={restaurantData.edges[0].node.restaurant_details} />
             <Menu menu={restaurantData.edges[0].node.menu} />
         </Layout>
     );
