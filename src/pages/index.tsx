@@ -109,63 +109,63 @@ const ContactUsBlock = (props: { data: ContactDataType }) => (
 )
 
 const IndexPage = () => {
-  // const dataJson = {};
-  const { dataJson, homeImages } = useStaticQuery(graphql`
-    query HomeQuery {
-      dataJson {
-        landing {
-          title
-          description
-          buttonText
-        }
-        ourRooms {
-          title
-          description
-          buttonText
-        }
-        aboutUs {
-          title
-          description
-          buttonText
-        }
-        itemOne {
-          title
-          description
-          buttonText
-        }
-        itemTwo {
-          title
-          description
-          buttonText
-        }
-        contactUs {
-          title
-          textContact
-          subheading
-          buttons {
-            text
-            link
+  // const homeData = {};
+  const { homeData, homeImages } = useStaticQuery(graphql`
+  query HomeQuery {
+    homeData: allDataJson(filter: {landing: {title: {ne: null}}}) {
+      edges {
+        node {
+          landing {
+            title
+            description
+            buttonText
+          }
+          ourRooms {
+            title
+            description
+            buttonText
+          }
+          aboutUs {
+            title
+            description
+            buttonText
+          }
+          itemOne {
+            title
+            description
+            buttonText
+          }
+          itemTwo {
+            title
+            description
+            buttonText
+          }
+          contactUs {
+            title
+            subheading
+            textContact
           }
         }
       }
-      homeImages: allFile(filter: {relativeDirectory: {eq: "home"}}) {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              gatsbyImageData(placeholder: BLURRED, height: 1500, width: 1500)
-            }
+    }
+    homeImages: allFile(filter: {relativeDirectory: {eq: "home"}}) {
+      edges {
+        node {
+          relativePath
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, height: 1500, width: 1500)
           }
         }
       }
-    }  
+    }
+  }  
   `)
 
   React.useEffect(() => {
     AOS.init({ duration: 600 });
   }, [])
 
-  console.log(homeImages.edges)
+  console.log(homeData)
 
   const getImageFromPath = (path: string) => {
     const extensions = [".jpg", ".png", ".jpeg"]
@@ -184,12 +184,12 @@ const IndexPage = () => {
 
   return (
     <Layout hasNavbar hasFooter>
-      <WelcomeBlock data={dataJson.landing} />
-      <RoomsBlock data={dataJson.ourRooms} image={getImageFromPath("home/rooms")} />
-      <AboutUsBlock data={dataJson.aboutUs} />
-      <FacilitiesBlock data={dataJson.itemOne} image={getImageFromPath("home/facilities")} />
-      <RestaurantBlock data={dataJson.itemTwo} image={getImageFromPath("home/restaurant")} />
-      <ContactUsBlock data={dataJson.contactUs} />
+      <WelcomeBlock data={homeData.edges[0].node.landing} />
+      <RoomsBlock data={homeData.edges[0].node.ourRooms} image={getImageFromPath("home/rooms")} />
+      <AboutUsBlock data={homeData.edges[0].node.aboutUs} />
+      <FacilitiesBlock data={homeData.edges[0].node.itemOne} image={getImageFromPath("home/facilities")} />
+      <RestaurantBlock data={homeData.edges[0].node.itemTwo} image={getImageFromPath("home/restaurant")} />
+      <ContactUsBlock data={homeData.edges[0].node.contactUs} />
     </Layout>
   )
 }
