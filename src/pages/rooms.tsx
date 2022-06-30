@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // Import Swiper React components
@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import Layout from '../components/Layout';
 
@@ -37,8 +39,7 @@ const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
                             <div className='subheading' data-aos="fade-up" data-aos-delay="200">All of our rooms provide direct views to the beach and the town of Canoa. Each room is equipped with a private bathroom, television, and airconditioning. The rooms are cleaned daily and fresh linen is provided everyday.</div>
                         </div>
                         <Swiper
-                            modules={[Autoplay, Pagination, Navigation]}
-                            pagination={{ clickable: true }}
+                            modules={[Autoplay, Navigation]}
                             spaceBetween={0}
                             navigation
                             slidesPerView={1}
@@ -66,7 +67,7 @@ const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
     );
 }
 
-const EachRoom = (props: { data: RoomType, index: number, image: IGatsbyImageData, reverse: boolean, galleryImages: any, path: string }) => {
+const EachRoom = (props: { data: RoomType, index: number, reverse: boolean, roomImages: any, path: string }) => {
     if (!props.reverse) {
         return (
             <div className='scale-content-width' style={{ backgroundColor: "white" }}>
@@ -85,9 +86,7 @@ const EachRoom = (props: { data: RoomType, index: number, image: IGatsbyImageDat
                         <Link target="_blank" to={props.data.button.link} className={"room-button btn btn-large"} data-aos="fade-right">{props.data.button?.text}</Link>
                     </div>
                     <div className={"room-right"} data-aos="fade-left">
-                        
-                        <ImageGallery galleryImages={props.galleryImages} path={props.path} />
-                        {/* <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} /> */}
+                        <ImageGallery roomImages={props.roomImages} path={props.path} />
                     </div>
                 </div>
             </div>
@@ -110,7 +109,7 @@ const EachRoom = (props: { data: RoomType, index: number, image: IGatsbyImageDat
                         <Link target="_blank" to={props.data.button.link} className={"room-button btn btn-large btn-secondary"} data-aos="fade-left">{props.data.button?.text}</Link>
                     </div>
                     <div className={"room-right"} data-aos="fade-right">
-                        <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} />
+                        <ImageGallery roomImages={props.roomImages} path={props.path} />
                     </div>
                 </div>
             </div>
@@ -119,35 +118,34 @@ const EachRoom = (props: { data: RoomType, index: number, image: IGatsbyImageDat
 
 }
 
-const ImageGallery = (props: { galleryImages: any | null, path: string }) => {
+const ImageGallery = (props: { roomImages: any | null, path: string }) => {
     // get all images with same number eg. all "rooms/1_"
-    const filteredImages = props.galleryImages.edges
+    const filteredImages = props.roomImages.edges
         .filter(((edge: any) => (edge.node.relativePath.indexOf(props.path) !== -1)))
-        .sort((edge: any, edge2: any)=>(edge.node.relativePath.replace(props.path, "") > edge2.node.relativePath.replace(props.path, "")));
+        .sort((edge: any, edge2: any) => (edge.node.relativePath.replace(props.path, "") > edge2.node.relativePath.replace(props.path, "")));
 
-        return (
-        <div className='scale-content-width'>
-            <div className='gallery-container block-content-width'>
-                <div className='gallery-render-space'>
+    return (
+        <div className='gallery-container'>
+            <div className='gallery-render-space'>
                 <Swiper
-                            modules={[Pagination, Navigation]}
-                            pagination={{ clickable: true }}
-                            spaceBetween={0}
-                            navigation
-                            slidesPerView={1}
-                            onSwiper={(swiper) => console.log(swiper)}
-                        >
-                            {
-                                filteredImages && filteredImages !== null && filteredImages.map((edge: any, index: number) => {
-                                    return (
-                                        <SwiperSlide key={index} className='image-container'>
-                                                <GatsbyImage key={index} image={edge.node.childImageSharp.gatsbyImageData} alt={"showcase"} />
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-                        </Swiper>
-                </div>
+                    modules={[Autoplay, Pagination, Navigation]}
+                    pagination={{ clickable: true }}
+                    spaceBetween={0}
+                    navigation
+                    slidesPerView={1}
+                    onSwiper={(swiper) => console.log(swiper)}
+
+                >
+                    {
+                        filteredImages && filteredImages !== null && filteredImages.map((edge: any, index: number) => {
+                            return (
+                                <SwiperSlide key={index} >
+                                    <GatsbyImage key={index} image={edge.node.childImageSharp.gatsbyImageData} alt={"showcase"} />
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+                </Swiper>
             </div>
         </div>
     )
@@ -172,7 +170,7 @@ const handleFullscreenImg = (e: any) => {
 }
 
 const Rooms = () => {
-    const { roomsData, mainImages, galleryImages, carouselImages } = useStaticQuery(graphql`
+    const { roomsData, roomImages, carouselImages } = useStaticQuery(graphql`
     query RoomsQuery {
         roomsData: allDataJson(filter: {roomsLanding: {title: {ne: null}}}) {
           edges {
@@ -190,25 +188,6 @@ const Rooms = () => {
                   text
                   link
                 }
-              }
-            }
-          }
-        }
-        mainImages: allFile(
-          filter: {relativeDirectory: {eq: "rooms"}, relativePath: {regex: "/main/"}}
-        ) {
-          totalCount
-          edges {
-            node {
-              relativePath
-              childImageSharp {
-                gatsbyImageData(
-                  width: 800
-                  aspectRatio: 1.2
-                  placeholder: BLURRED
-                  transformOptions: {fit: COVER, cropFocus: ATTENTION}
-                  formats: [AUTO, WEBP, AVIF]
-                )
               }
             }
           }
@@ -232,7 +211,7 @@ const Rooms = () => {
             }
           }
         }
-        galleryImages: allFile(
+        roomImages: allFile(
           filter: {relativeDirectory: {eq: "rooms"}, relativePath: {regex: "/^((?!main).)*$/"}}
         ) {
           totalCount
@@ -241,8 +220,8 @@ const Rooms = () => {
               relativePath
               childImageSharp {
                 gatsbyImageData(
-                    width: 800
-                    aspectRatio: 1.2
+                    width: 1000
+                    aspectRatio: 1.5
                     placeholder: BLURRED
                     transformOptions: {fit: COVER, cropFocus: ATTENTION}
                     formats: [AUTO, WEBP, AVIF]
@@ -259,21 +238,6 @@ const Rooms = () => {
         AOS.init({ duration: 600 });
     }, [])
 
-    const getMainImage = (path: string) => {
-        const extensions = [".jpg", ".png", ".jpeg"]
-        for (let i = 0; i < extensions.length; i++) {
-            try {
-                const imageData = mainImages.edges.find((edge: { node: { relativePath: string; }; }) => {
-                    return edge.node.relativePath === path + "main" + extensions[i]
-                }).node.childImageSharp.gatsbyImageData;
-                return imageData;
-            } catch (err) {
-                continue;
-            }
-        }
-        return null;
-    }
-
     return (
         <Layout hasNavbar hasFooter backgroundColor={"#f7f7f7"}>
             <ImageCarousel carouselImages={carouselImages} path={"rooms/swiper_"} />
@@ -282,9 +246,8 @@ const Rooms = () => {
                     <div key={index}>
                         <EachRoom
                             data={eachRoom}
-                            galleryImages={galleryImages}
+                            roomImages={roomImages}
                             path={"rooms/" + (index + 1) + "_"}
-                            image={getMainImage("rooms/" + (index + 1) + "_")}
                             index={index}
                             reverse={index % 2 === 1}
                         />

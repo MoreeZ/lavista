@@ -13,7 +13,7 @@ export default function Footer(props: IFooterProps) {
       <div className='footer-top'>
         <div className='text'>Canoa, Ecuador</div>
         <div className='text'>
-        <a href="mailto:hello@lctutors.com">lavistacanoa@gmail.com</a>
+        <a target="_blank" href="mailto:hello@lctutors.com">lavistacanoa@gmail.com</a>
         </div>
         <div className='icon-cont text'>
           <img src={twitterIcon} />
@@ -23,7 +23,7 @@ export default function Footer(props: IFooterProps) {
         <hr color='white ' />
       </div>
       <div className='footer-bottom'>
-        <div className='privacy-policy text'><a href='/#'>We care about your privacy.</a></div>
+        <div className='privacy-policy text'><a target="_blank" href='/#'>We care about your privacy.</a></div>
         <div className='copyright'>
 Copyright ©2022 La Vista Canoa Hotel - lavistacanoa@gmail.com</div>
       </div>
