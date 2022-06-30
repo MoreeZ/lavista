@@ -1,0 +1,143 @@
+
+// Restaurant details screen =======================================================
+.restaurant-screen {
+    background-color: #20404d;
+    background-image: url("../images/restaurant/restaurant-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 70px 0px;
+    position: relative;
+    z-index: 0;
+
+    .restaurant-darken {
+        background-color: rgba($color: #0d2031, $alpha: 0.7);
+        width: 100%;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .restaurant-container {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .heading {
+            font-size: 5vw;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .subheading {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 500;
+            line-height: 2.3rem;
+        }
+        
+        .subheading2 {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 2rem;
+        }
+    }
+}
+
+
+@media (max-width: 800px) {
+    .restaurant-screen {
+        .restaurant-container {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .heading {
+                font-size: 2.5rem;
+                margin-bottom: 40px;
+            }
+
+            .subheading {
+                font-size: 1rem;
+                line-height: 1.6rem;
+            }
+
+            .subheading2 {
+                font-size: 0.8rem;
+                line-height: 1.5rem;
+            }
+        }
+    }
+}
+
+// menu screen ================================================
+
+.menu-container {
+    padding: 40px 0px 20px 0px;
+
+    .menu-heading {
+        font-size: 2.6rem;
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+
+    .menu-render-space {
+        flex-direction: column;
+        // background-color: #0d2031;
+        .each-submenu {
+            width: 100%;
+            border: black 2px solid;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #e7f0f4;
+            
+            .submenu-heading {
+                font-size: 1.7rem;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .submenu-render-space {
+                width: 100%;
+
+                tr {
+                    width: 100%;
+                    
+                    th {
+                        text-align: start;
+                        border-bottom: black 2px solid;
+                        padding-bottom: 5px;
+                    }
+
+                    td {
+                        padding-top: 5px;
+                        margin-right: 10px;
+                    }
+
+                    .dish-name {
+                        width: 25%;
+                    }
+
+                    .dish-description {
+                        width: 50%;
+                    }
+
+                    .dish-price {
+                        width: 25%;
+                    }
+                }
+            }
+        }
+    }
+
+}
