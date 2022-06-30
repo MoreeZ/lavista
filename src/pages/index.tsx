@@ -35,6 +35,7 @@ const WelcomeBlock = (props: { data: BasicDataType }) => (
       </div>
       <a href="#" className="btn btn-large btn-secondary" data-aos="fade-up" data-aos-delay="400">{props.data && props.data.buttonText && props.data.buttonText !== null && props.data.buttonText}</a>
     </div>
+    <div className="welcome-darken"></div>
   </div>
 )
 
