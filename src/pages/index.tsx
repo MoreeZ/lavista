@@ -41,13 +41,13 @@ const WelcomeBlock = (props: { data: BasicDataType }) => (
 
 const RoomsBlock = (props: { data: BasicDataType, image: IGatsbyImageData }) => (
   <div className='scale-content-width'>
-    <div className="block-content-width og-container">
-      <div className="og-left">
-        <div className='og-heading' data-aos="fade-right">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
-        <div className='og-desc' data-aos="fade-right">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
-        <Link target="_blank" to={props.data.button.link} className="og-button btn btn-large" data-aos="fade-right">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
+    <div className="block-content-width rm-container">
+      <div className="rm-left">
+        <div className='rm-heading' data-aos="fade-right">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
+        <div className='rm-desc' data-aos="fade-right">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
+        <Link target="_blank" to={props.data.button.link} className="rm-button btn btn-large" data-aos="fade-right">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
       </div>
-      <div className="og-right" data-aos="fade-left">
+      <div className="rm-right" data-aos="fade-left">
         <GatsbyImage image={props.image} alt={"Rooms image unavailable..."} />
       </div>
     </div>

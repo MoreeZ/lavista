@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // Import Swiper React components
@@ -22,58 +22,6 @@ type RoomType = {
     price: string,
     utilities: string[]
     button: ButtonType
-}
-
-
-const EachRoom = (props: { data: RoomType, index: number, image: IGatsbyImageData, reverse: boolean }) => {
-    if (!props.reverse) {
-        return (
-            <div className='scale-content-width' style={{ backgroundColor: "white" }}>
-                <div className={'room-container'}>
-                    <div className={"room-left"}>
-                        <div className='room-heading' data-aos="fade-right">{props.data.title}</div>
-                        <div className='room-price' data-aos="fade-right">Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
-                        <div className='utilities-container' data-aos="fade-right">{
-                            props.data.utilities && props.data.utilities.map((util) => {
-                                return (
-                                    <span className='utility' key={util}>{util}</span>
-                                )
-                            })
-                        }</div>
-                        <div className='room-desc' data-aos="fade-right">{props.data.description}</div>
-                        <Link target="_blank" to={props.data.button.link} className={"room-button btn btn-large"} data-aos="fade-right">{props.data.button?.text}</Link>
-                    </div>
-                    <div className={"room-right"} data-aos="fade-left">
-                        <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} />
-                    </div>
-                </div>
-            </div>
-        )
-    } else {
-        return (
-            <div className='scale-content-width' style={{ backgroundColor: "white" }}>
-                <div className={'room-container room-container-reverse'}>
-                    <div className={"room-left"}>
-                        <div className='room-heading' data-aos="fade-left" >{props.data.title}</div>
-                        <div className='room-price' data-aos="fade-left" >Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
-                        <div className='utilities-container' data-aos="fade-left">{
-                            props.data.utilities && props.data.utilities.map((util) => {
-                                return (
-                                    <span className='utility' key={util} >{util}</span>
-                                )
-                            })
-                        }</div>
-                        <div className='room-desc' data-aos="fade-left"  >{props.data.description}</div>
-                        <Link target="_blank" to={props.data.button.link} className={"room-button btn btn-large btn-secondary"} data-aos="fade-left">{props.data.button?.text}</Link>
-                    </div>
-                    <div className={"room-right"} data-aos="fade-right">
-                        <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} />
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
 }
 
 const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
@@ -118,26 +66,87 @@ const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
     );
 }
 
+const EachRoom = (props: { data: RoomType, index: number, image: IGatsbyImageData, reverse: boolean, galleryImages: any, path: string }) => {
+    if (!props.reverse) {
+        return (
+            <div className='scale-content-width' style={{ backgroundColor: "white" }}>
+                <div className={'room-container'}>
+                    <div className={"room-left"}>
+                        <div className='room-heading' data-aos="fade-right">{props.data.title}</div>
+                        <div className='room-price' data-aos="fade-right">Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
+                        <div className='utilities-container' data-aos="fade-right">{
+                            props.data.utilities && props.data.utilities.map((util) => {
+                                return (
+                                    <span className='utility' key={util}>{util}</span>
+                                )
+                            })
+                        }</div>
+                        <div className='room-desc' data-aos="fade-right">{props.data.description}</div>
+                        <Link target="_blank" to={props.data.button.link} className={"room-button btn btn-large"} data-aos="fade-right">{props.data.button?.text}</Link>
+                    </div>
+                    <div className={"room-right"} data-aos="fade-left">
+                        
+                        <ImageGallery galleryImages={props.galleryImages} path={props.path} />
+                        {/* <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} /> */}
+                    </div>
+                </div>
+            </div>
+        )
+    } else {
+        return (
+            <div className='scale-content-width' style={{ backgroundColor: "white" }}>
+                <div className={'room-container room-container-reverse'}>
+                    <div className={"room-left"}>
+                        <div className='room-heading' data-aos="fade-left" >{props.data.title}</div>
+                        <div className='room-price' data-aos="fade-left" >Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
+                        <div className='utilities-container' data-aos="fade-left">{
+                            props.data.utilities && props.data.utilities.map((util) => {
+                                return (
+                                    <span className='utility' key={util} >{util}</span>
+                                )
+                            })
+                        }</div>
+                        <div className='room-desc' data-aos="fade-left"  >{props.data.description}</div>
+                        <Link target="_blank" to={props.data.button.link} className={"room-button btn btn-large btn-secondary"} data-aos="fade-left">{props.data.button?.text}</Link>
+                    </div>
+                    <div className={"room-right"} data-aos="fade-right">
+                        <GatsbyImage image={props.image} alt={"Room " + props.index + " image"} style={{ height: "100%" }} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+}
+
 const ImageGallery = (props: { galleryImages: any | null, path: string }) => {
     // get all images with same number eg. all "rooms/1_"
-    const filteredImages = props.galleryImages.edges.filter(((edge: any) => (edge.node.relativePath.indexOf(props.path) !== -1)));
-    console.log(props.path, filteredImages);
-    return (
+    const filteredImages = props.galleryImages.edges
+        .filter(((edge: any) => (edge.node.relativePath.indexOf(props.path) !== -1)))
+        .sort((edge: any, edge2: any)=>(edge.node.relativePath.replace(props.path, "") > edge2.node.relativePath.replace(props.path, "")));
+
+        return (
         <div className='scale-content-width'>
             <div className='gallery-container block-content-width'>
-                <div className='heading'>More Images</div>
                 <div className='gallery-render-space'>
-                    {
-                        filteredImages && filteredImages !== null && filteredImages.map((edge: any, index: number) => {
-                            return (
-                                <div key={index} className='image-container' data-aos="fade-in" data-aos-delay={100 * index} onClick={handleFullscreenImg}>
-                                    <div className=''>
-                                        <GatsbyImage key={index} image={edge.node.childImageSharp.gatsbyImageData} alt={"showcase"} />
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
+                <Swiper
+                            modules={[Pagination, Navigation]}
+                            pagination={{ clickable: true }}
+                            spaceBetween={0}
+                            navigation
+                            slidesPerView={1}
+                            onSwiper={(swiper) => console.log(swiper)}
+                        >
+                            {
+                                filteredImages && filteredImages !== null && filteredImages.map((edge: any, index: number) => {
+                                    return (
+                                        <SwiperSlide key={index} className='image-container'>
+                                                <GatsbyImage key={index} image={edge.node.childImageSharp.gatsbyImageData} alt={"showcase"} />
+                                        </SwiperSlide>
+                                    )
+                                })
+                            }
+                        </Swiper>
                 </div>
             </div>
         </div>
@@ -232,11 +241,11 @@ const Rooms = () => {
               relativePath
               childImageSharp {
                 gatsbyImageData(
-                  width: 800
-                  aspectRatio: 1.2
-                  placeholder: BLURRED
-                  transformOptions: {fit: COVER, cropFocus: ATTENTION}
-                  formats: [AUTO, WEBP, AVIF]
+                    width: 800
+                    aspectRatio: 1.2
+                    placeholder: BLURRED
+                    transformOptions: {fit: COVER, cropFocus: ATTENTION}
+                    formats: [AUTO, WEBP, AVIF]
                 )
               }
             }
@@ -250,7 +259,7 @@ const Rooms = () => {
         AOS.init({ duration: 600 });
     }, [])
 
-    const getImageFromPath = (path: string) => {
+    const getMainImage = (path: string) => {
         const extensions = [".jpg", ".png", ".jpeg"]
         for (let i = 0; i < extensions.length; i++) {
             try {
@@ -271,7 +280,14 @@ const Rooms = () => {
             {
                 roomsData && roomsData.edges[0] && roomsData.edges[0] !== null && roomsData.edges[0].node.availableRooms.map((eachRoom: any, index: number) => (
                     <div key={index}>
-                        <EachRoom data={eachRoom} image={getImageFromPath("rooms/" + (index + 1) + "_")} index={index} reverse={index % 2 === 1} />
+                        <EachRoom
+                            data={eachRoom}
+                            galleryImages={galleryImages}
+                            path={"rooms/" + (index + 1) + "_"}
+                            image={getMainImage("rooms/" + (index + 1) + "_")}
+                            index={index}
+                            reverse={index % 2 === 1}
+                        />
                     </div>
                 ))
             }

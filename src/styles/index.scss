@@ -73,7 +73,7 @@ $light_grey: #F3F3F3;
 }
 
 // rooms =======================================================
-.og-container {
+.rm-container {
     padding: 30px 00px;
     min-height: 420px;
     display: flex;
@@ -81,7 +81,7 @@ $light_grey: #F3F3F3;
     align-items: center;
     justify-content: space-between;
 
-    .og-left {
+    .rm-left {
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -91,14 +91,14 @@ $light_grey: #F3F3F3;
         padding: 30px;
         padding-right: 50px;
 
-        .og-heading {
+        .rm-heading {
             font-size: 3rem;
             font-weight: bold;
             color: rgb(46, 46, 46);
             margin-bottom: 30px;
         }
 
-        .og-desc {
+        .rm-desc {
             font-size: 1.3rem;
             font-weight: 500;
             line-height: 2.0rem;
@@ -106,7 +106,7 @@ $light_grey: #F3F3F3;
         }
     }
 
-    .og-right {
+    .rm-right {
         margin: 20px;
         margin-left: 50px;
         height: 100%;
@@ -122,18 +122,18 @@ $light_grey: #F3F3F3;
 }
 
 @media (max-width: 1080px) {
-    .og-container {
+    .rm-container {
         flex-direction: column;
         height: auto;
 
-        .og-left {
+        .rm-left {
             padding: 30px 0px;
             text-align: center;
             justify-content: center;
             align-items: center;
         }
 
-        .og-right {
+        .rm-right {
             height: auto;
             width: 100%;
             margin: 30px 0px;
@@ -147,10 +147,28 @@ $light_grey: #F3F3F3;
 }
 
 @media (max-width: 800px) {
-    .og-container {
-        .og-left {
-            .og-desc {
+    .rm-container {
+        .rm-left {
+            .rm-desc {
                 line-height: 1.9rem;
+            }
+        }
+    }
+}
+@media (max-width: 700px) {
+    .rm-container {
+        padding: 0px 15px;
+
+        .rm-left {
+            .rm-heading {
+                font-size: 2.7rem;
+                margin-bottom: 1.6rem;
+            }
+    
+            .rm-desc {
+                font-size: 1.1rem;
+                margin-bottom: 1.6rem;
+                line-height: 1.8rem;
             }
         }
     }
@@ -192,9 +210,24 @@ $light_grey: #F3F3F3;
 }
 
 @media (max-width: 1200px) {
-    .au-container {
-        .au-content {
-            max-width: 90%;
+    .au-container .au-content {
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 700px) {
+    .au-container .au-content {
+        .au-heading {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .au-desc {
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.6rem;
+            margin-bottom: 2rem;
         }
     }
 }
@@ -246,6 +279,25 @@ $light_grey: #F3F3F3;
 
             img {
                 width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .rsc-container {
+        padding: 0px 15px;
+
+        .rsc-right {
+            .rsc-heading {
+                font-size: 2.7rem;
+                margin-bottom: 1.6rem;
+            }
+    
+            .rsc-desc {
+                font-size: 1.1rem;
+                margin-bottom: 1.6rem;
+                line-height: 1.8rem;
             }
         }
     }
@@ -303,6 +355,24 @@ $light_grey: #F3F3F3;
     }
 }
 
+@media (max-width: 700px) {
+    .of-container {
+        padding: 0px 15px;
+        .of-left {
+            .of-heading {
+                font-size: 2.7rem;
+                margin-bottom: 1.6rem;
+            }
+    
+            .of-desc {
+                font-size: 1.1rem;
+                margin-bottom: 1.6rem;
+                line-height: 1.8rem;
+            }
+        }
+    }
+}
+
 // contact =======================================================
 .contact-container {
     display: flex;
@@ -351,13 +421,14 @@ $light_grey: #F3F3F3;
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
     .contact-container {
         .ib-row {
             flex-direction: column;
+            margin-bottom: 40px;
 
-            input {
-                margin: 0px 15px;
+            a {
+                margin: 10px 15px;
             }
         }
     }

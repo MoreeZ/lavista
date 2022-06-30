@@ -72,6 +72,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
         min-width: 500px;
         max-width: 800px;
 
@@ -247,41 +248,19 @@
 }
 
 // ==== Gallery ========================================
-
-// ======= Gallery ================
 .gallery-container {
-    $galleryHeight: 100px;
-    // max-height: $galleryHeight;
-    padding: 50px 0px;
-
-    .heading {
-        font-size: 2rem;
-        margin-bottom: 30px;
-        align-self: flex-start;
-        font-weight: 300;
-    }
+    height: 400px;
 
     .gallery-render-space {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        max-height: $galleryHeight;
-        width: 100%;
-        overflow-x: scroll;
 
         .image-container {
-            width: 200px;
-            height: 200px;
-            margin-right: 20px;
             cursor: pointer;
-
+        
             img {
-                width: 100%;
-                height: 100%;
                 opacity: 1;
                 pointer-events: all;
                 border: rgb(5, 5, 5) 2px block;
+            
             }
 
             .img:hover {
