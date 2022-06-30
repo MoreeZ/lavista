@@ -1,6 +1,7 @@
+// Variables
 $desktop_width: 1200px;
-$primary_color: #65A5D8;
-$secondary_color: #EC9A3A;
+$primary_color: #48a1e5;
+$secondary_color: #f09f25;
 $light_grey: #F3F3F3;
 
 // Welcome screen =======================================================
@@ -17,6 +18,17 @@ $light_grey: #F3F3F3;
     text-align: center;
     color: white;
     padding: 70px 0px;
+    position: relative;
+    z-index: 0;
+    
+    .welcome-darken {
+        background-color: rgba($color: #0d2031, $alpha: 0.7);
+        width: 100%;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        z-index: -1;
+    }
 
     .content-container {
         width: 56%;
@@ -188,7 +200,7 @@ $light_grey: #F3F3F3;
 }
 
 
-// Resources
+// Facilities
 .rsc-container {
     display: flex;
     flex-direction: row;
@@ -227,6 +239,7 @@ $light_grey: #F3F3F3;
     .rsc-container {
         flex-direction: column-reverse;
         align-items: center;
+        padding: 0px 40px;
 
         .rsc-left {
             margin: 30px 10px;
@@ -239,7 +252,7 @@ $light_grey: #F3F3F3;
 }
 
 
-// Ocontactine Forum =======================================================
+// Restaurant =======================================================
 .of-container {
     display: flex;
     flex-direction: row;
@@ -278,6 +291,7 @@ $light_grey: #F3F3F3;
     .of-container {
         flex-direction: column;
         align-items: center;
+        padding: 0px 40px;
 
         .of-right {
             margin: 30px 10px;
