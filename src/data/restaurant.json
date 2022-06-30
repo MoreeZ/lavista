@@ -1,3 +1,40 @@
 {
-    
+    "details": {
+        "title": "La Vista Restaurant",
+        "description_main": "Our restaurant offers a vast veriety of fresh seafoods and meats, juicy fruit and vegetables and delicious cocktails and juices.",
+        "description_par1": "Breakfast 08:00 to 10:00 every day.",
+        "description_par2": "Dinner only during high season."
+    },
+    "menu": [
+        {
+            "subheading": "Breakfast",
+            "dishes": [
+                {
+                    "name": "Bolon",
+                    "description": "Tasty stuff",
+                    "price": "$2.50"
+                },
+                {
+                    "name": "Scrambled Huevos",
+                    "description": "Eggs that have been scrambled",
+                    "price": "$2.50"
+                }
+            ]
+        },
+        {
+            "subheading": "Starters",
+            "dishes": [
+                {
+                    "name": "Cameron",
+                    "description": "Seafood description",
+                    "price": "$2.50"
+                },
+                {
+                    "name": "Cameron",
+                    "description": "Boilerplate text",
+                    "price": "$5.00"
+                }
+            ]
+        }
+    ]
 }
