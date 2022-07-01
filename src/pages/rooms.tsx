@@ -27,7 +27,9 @@ type RoomType = {
 }
 
 const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
-    const filteredImages = props.carouselImages.edges.filter(((edge: any) => (edge.node.relativePath.indexOf(props.path) !== -1)));
+    const filteredImages = props.carouselImages.edges
+        .filter(((edge: any) => (edge.node.relativePath.indexOf(props.path) !== -1)))
+        .sort((edge: any, edge2: any) => (edge.node.relativePath.replace(props.path, "") > edge2.node.relativePath.replace(props.path, "")));;
     return (
         <div>
             <div className='scale-content-width'>
@@ -39,9 +41,8 @@ const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
                             <div className='subheading' data-aos="fade-up" data-aos-delay="200">All of our rooms provide direct views to the beach and the town of Canoa. Each room is equipped with a private bathroom, television, and airconditioning. The rooms are cleaned daily and fresh linen is provided everyday.</div>
                         </div>
                         <Swiper
-                            modules={[Autoplay, Navigation]}
+                            modules={[Autoplay]}
                             spaceBetween={0}
-                            navigation
                             slidesPerView={1}
                             onSwiper={(swiper) => console.log(swiper)}
                             autoplay={true}
@@ -132,6 +133,7 @@ const ImageGallery = (props: { roomImages: any | null, path: string }) => {
                     pagination={{ clickable: true }}
                     spaceBetween={0}
                     navigation
+                    loop
                     slidesPerView={1}
                     onSwiper={(swiper) => console.log(swiper)}
 
@@ -150,25 +152,6 @@ const ImageGallery = (props: { roomImages: any | null, path: string }) => {
         </div>
     )
 }
-
-const handleFullscreenImg = (e: any) => {
-    const dimElement = e.currentTarget.children[0];
-    const imageElement = e.currentTarget.children[0].children[0].children[2].children[2];
-    const htmlElem = document.querySelector('html');
-    if (dimElement.className === 'bg-dim') {
-        imageElement.className = '';
-        dimElement.className = '';
-        if (typeof (document) !== undefined && htmlElem !== null)
-            htmlElem.style.overflowY = "scroll";
-    } else {
-        imageElement.className = 'expanded';
-        dimElement.className = 'bg-dim';
-        if (typeof (document) !== undefined && htmlElem !== null)
-            htmlElem.style.overflowY = "hidden";
-    }
-
-}
-
 const Rooms = () => {
     const { roomsData, roomImages, carouselImages } = useStaticQuery(graphql`
     query RoomsQuery {
@@ -239,11 +222,11 @@ const Rooms = () => {
     }, [])
 
     return (
-        <Layout hasNavbar hasFooter backgroundColor={"#f7f7f7"}>
+        <Layout hasNavbar hasFooter backgroundColor={"#f0f2f7"}>
             <ImageCarousel carouselImages={carouselImages} path={"rooms/swiper_"} />
             {
                 roomsData && roomsData.edges[0] && roomsData.edges[0] !== null && roomsData.edges[0].node.availableRooms.map((eachRoom: any, index: number) => (
-                    <div key={index}>
+                    <div key={index} className="each-room-wrapper">
                         <EachRoom
                             data={eachRoom}
                             roomImages={roomImages}

@@ -37,10 +37,10 @@ $light_grey: #F3F3F3;
 
         .nav-dropdown {
             position:fixed;
-            top: 100px;
+            top: 80px;
             left: 0;
             right: 0;
-            height: calc(100vh - 100px);
+            height: calc(100vh - 80px);
             background-color: white;
             display: flex;
             flex-direction: column;
@@ -48,16 +48,27 @@ $light_grey: #F3F3F3;
             align-items: center;
             transform: translateY(0);
             transition: all ease-out 200ms;
-            overflow: scroll;
+            overflow-y: scroll;
             padding: 20px 0px;
 
             .nav-dropdown-link {
                 margin: 20px;
 
                 a {
-                    color: rgb(55, 55, 55);
+                    color: rgb(59, 59, 59);
                     text-decoration: none;
                     font-size: 20px;
+                }
+
+                .active-link {
+                    font-weight: bold;
+                    color: $secondary_color;
+                }
+                .active-link::before {
+                    content: "> ";
+                }
+                .active-link::after {
+                    content: " <";
                 }
             }
         }
@@ -65,7 +76,6 @@ $light_grey: #F3F3F3;
         .nav-left+.nav-center+.nav-right {
             height: 100%;
         }
-
 
         .nav-right {
             display: flex;
