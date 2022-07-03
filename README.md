@@ -1,4 +1,4 @@
-# La Vista website
+# La Vista website <a href="https://lavistacanoa.com">www.lavistacanoa.com<a>
 
 ### Technologies used:
 <b>Main framework:</b> NodeJS, React, Gatsby, Typescript, Graphql <br/>
