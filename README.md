@@ -1,12 +1,12 @@
 # La Vista website
 
 ### Technologies used:
-Main framework: NodeJS, React, Gatsby, Typescript, Graphql
-Styling and animations: SASS, AOS
-Version control: Git, Github
-Demo hosting: Firebase
-Deployment hosting: N/A
-Domain provider: 
+Main framework: NodeJS, React, Gatsby, Typescript, Graphql <br/>
+Styling and animations: SASS, AOS <br/>
+Version control: Git, Github <br/>
+Demo hosting: Firebase <br/>
+Deployment hosting: Firebase <br/>
+Domain provider: N/A <br/>
 
 ### Downloads
 - NodeJS: https://nodejs.org/en/download/
@@ -23,7 +23,7 @@ Domain provider:
 2. Use `firebase login` and login in the browser to your google account.
 3. Use `firebase init hosting`, select your project or new project if not done before
 <details>
-<summary>details</summary>
+<summary>More Details HERE</summary>
 <br>
 <ul>
   <li>"ready to process? (y/N)": Press Enter</li>
