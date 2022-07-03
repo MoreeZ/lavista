@@ -17,18 +17,22 @@ Domain provider:
 2. Navigate into repository `cd lavista`
 3. Install all required local dependencies `npm install`
 
-<details>
-<summary>### Firebase setup</summary>
-<br>
+### Firebase setup
+
 1. If not yet installed, install firebase tools globally using `npm i --location=global firebase-tools gatsby-cli`
 2. Use `firebase login` and login in the browser to your google account.
-3. Use `firebase init hosting`
-  - "ready to process? (y/N)": Press Enter
-  - "What do you want to use as your public directory? (public)": Press Enter
-  - "Configure as a single-page app (rewrite all urls to /index.html)?": Press Enter
-  - "Set up automatic builds and deploys with GitHub?": n
-  - "File public/404.html already exists. Overwrite? (y/N)": Press Enter
-  - "File public/index.html already exists. Overwrite? (y/N)": Press Enter
+3. Use `firebase init hosting`, select your project or new project if not done before
+<details>
+<summary>details</summary>
+<br>
+<ul>
+  <li>"ready to process? (y/N)": Press Enter</li>
+  <li>"What do you want to use as your public directory? (public)": Press Enter</li>
+  <li>"Configure as a single-page app (rewrite all urls to /index.html)?": Press Enter</li>
+  <li>"Set up automatic builds and deploys with GitHub?": n</li>
+  <li>"File public/404.html already exists. Overwrite? (y/N)": Press Enter</li>
+  <li>"File public/index.html already exists. Overwrite? (y/N)": Press Enter</li>
+</ul>
 </details>
 
 
