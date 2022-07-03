@@ -1,3 +1,50 @@
 {
-    
+    "services": {
+        "title": "Our Services",
+        "description": "Our guests have access to most premium facilities you can find in all of Canoa. Our reception is open 24/7",
+        "itemList": [
+            {
+                "title": "Roof Terrace",
+                "description": "The roof terrace is available for all guests at La Vista hotel. It has an amazing view over the entire canoa village. The terrace is fitted with plenty of dining space, comfortable swings and cozy hammocks."
+            },
+            {
+                "title": "Swimming Pool",
+                "description": "A 5ft deep swimming pool, cleaned and maintained twice a day every day. A fantastic way to spend time for adults, children and anyone who wishes to take a break from the pacific ocean."
+            },
+            {
+                "title": "Secure Parking",
+                "description": "There is plenty parking space for all our guests, regardless of the time of the year. We lock our gates every evening, ensuring your vehicle stays safe on our property at all times."
+            }
+        ]
+    },
+    "activities": {
+        "title": "What can I do in Canoa?",
+        "description": "In Canoa, you will also find a vast selection of daily activities to do either alone or with your family.",
+        "itemList": [
+            {
+                "title": "Swimming",
+                "description": "The canoa beach has always been a perfect spot for swimming. We are positioned 50 meters away from the beach facing the pacific ocean."
+            },
+            {
+                "title": "Surfing",
+                "description": "Don't stop at swimming. Rent a surf board and join dozens of our local surfers. Whether you're a beginner or a pro canoa offers surfing lessons for people of all ages."
+            },
+            {
+                "title": "Canoa night life",
+                "description": "Down for some banter? The vaillage is full of bars and friendly locals always looking forward to meeting new strangers."
+            },
+            {
+                "title": "Exotic fruit",
+                "description": "Cocnuts, pineapples, maracuya. You will find many bars offering the best freshly squeezed juices, smoothies and cocktails."
+            },
+            {
+                "title": "Gift markets",
+                "description": "Canoa's locals sell brancelets, necklaces seashells and other handmade gifts that you can only find here."
+            },
+            {
+                "title": "Nearby Mall",
+                "description": "Canoa is located a 20 minute drive away from Bahía which offers a large shopping mall where you can find anything you might need for your stay in Canoa."
+            }
+        ]
+    }
 }
