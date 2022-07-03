@@ -1,12 +1,12 @@
 # La Vista website
 
 ### Technologies used:
-Main framework: NodeJS, React, Gatsby, Typescript, Graphql <br/>
-Styling and animations: SASS, AOS <br/>
-Version control: Git, Github <br/>
-Demo hosting: Firebase <br/>
-Deployment hosting: Firebase <br/>
-Domain provider: N/A <br/>
+<b>Main framework:</b> NodeJS, React, Gatsby, Typescript, Graphql <br/>
+<b>Styling and animations:</b> SASS, AOS <br/>
+<b>Version control:</b> Git, Github <br/>
+<b>Demo hosting:</b> Firebase <br/>
+<b>Deployment hosting:</b> Firebase <br/>
+<b>Domain provider:</b> N/A <br/>
 
 ### Downloads
 - NodeJS: https://nodejs.org/en/download/
