@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import * as React from 'react';
 import Layout from '../components/Layout';
 import AOS from 'aos';
@@ -19,11 +19,10 @@ type SAADataType = {
   itemList: TitleDescElemType[]
 }
 
-const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: any }) => {
+const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: any, imageNotFound: IGatsbyImageData }) => {
   const filteredImages = props.saaImages.edges
     .filter(((edge: any) => (edge.node.relativePath.indexOf("services-and-activities/" + props.imageExt + "_") !== -1)))
     .sort((edge: any, edge2: any) => (edge.node.relativePath > edge2.node.relativePath));
-  let imageIndex = 0;
 
   return (
     <div className={'saa-container scale-content-width saa-' + props.imageExt}>
@@ -35,27 +34,23 @@ const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: 
       <div className='saa-render-space block-content-width'>
         {
           props.saaData.itemList.map((item, index) => {
-            const imageId = filteredImages[imageIndex] && filteredImages[imageIndex].node.relativePath
-              .replace(/^services-and-activities\/(\w)_/, "")
-              .replace(/.png$/, "").replace(/.jpg$/, "").replace(/.jpeg$/, "");
-              
-            let imageData = null;
-            if (filteredImages && 
-              filteredImages[imageIndex] &&
-              filteredImages[imageIndex] !== null && 
-              filteredImages[imageIndex].node &&
-              Number(imageId)-1 === index
-              ) {
-              imageData = filteredImages[imageIndex].node.childImageSharp.gatsbyImageData;
-              imageIndex++;
-            }
 
             return (
               <div className='each-item' key={index} data-aos="fade-in" aos-data-delay={(index * 200)} >
                 <div className='item-image-cont'>
                   <GatsbyImage
                     alt={"image " + index}
-                    image={imageData}
+                    image={
+                      filteredImages[index] &&
+                      filteredImages[index] !== null &&
+                      filteredImages[index].node &&
+                      filteredImages[index].node.childImageSharp.gatsbyImageData
+                    }
+                    imgStyle={{
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "1000px"
+                    }}
                   />
                 </div>
                 <div className='item-text-cont'>
@@ -72,7 +67,7 @@ const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: 
 }
 
 const ServicesAndActivities = (props: IResourcesProps) => {
-  const { saaData, saaImages } = useStaticQuery(graphql`
+  const { saaData, saaImages, imgNotFoundData } = useStaticQuery(graphql`
     query SaaQuery {
         saaData: allDataJson (filter:{services:{title:{ne:null}}}){
             edges {
@@ -105,11 +100,30 @@ const ServicesAndActivities = (props: IResourcesProps) => {
                 relativePath
                 childImageSharp {
                   gatsbyImageData(
-                    width: 600
+                    width: 400
                     aspectRatio: 1
                     placeholder: BLURRED
                     transformOptions: {fit: COVER, cropFocus: ATTENTION}
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [AUTO, WEBP, AVIF, JPG]
+                  )
+                }
+              }
+            }
+          }
+          imgNotFoundData: allFile(
+            filter: {relativePath: {eq: "image-not-found.jpg"}}
+          ) {
+            totalCount
+            edges {
+              node {
+                relativePath
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 400
+                    aspectRatio: 1
+                    placeholder: BLURRED
+                    transformOptions: {fit: COVER, cropFocus: ATTENTION}
+                    formats: [AUTO, WEBP, AVIF, JPG]
                   )
                 }
               }
@@ -124,8 +138,8 @@ const ServicesAndActivities = (props: IResourcesProps) => {
 
   return (
     <Layout hasNavbar hasFooter>
-      <SaaSection saaData={saaData.edges[0].node.services} imageExt="s" saaImages={saaImages} />
-      <SaaSection saaData={saaData.edges[0].node.activities} imageExt="a" saaImages={saaImages} />
+      <SaaSection saaData={saaData.edges[0].node.services} imageExt="s" saaImages={saaImages} imageNotFound={imgNotFoundData.edges[0] && imgNotFoundData.edges[0].node.childImageSharp.gatsbyImageData} />
+      <SaaSection saaData={saaData.edges[0].node.activities} imageExt="a" saaImages={saaImages} imageNotFound={imgNotFoundData.edges[0] && imgNotFoundData.edges[0].node.childImageSharp.gatsbyImageData} />
     </Layout>
   );
 }

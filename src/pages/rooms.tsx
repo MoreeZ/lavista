@@ -46,7 +46,6 @@ const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
                             slidesPerView={1}
                             onSwiper={(swiper) => console.log(swiper)}
                             autoplay={true}
-                            loop={true}
                         >
                             {
                                 filteredImages && filteredImages !== null && filteredImages.map((edge: any, index: number) => {

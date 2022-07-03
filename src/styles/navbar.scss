@@ -1,8 +1,9 @@
 // Variables
 $desktop_width: 1200px;
-$primary_color: #48a1e5;
-$secondary_color: #f09f25;
+$primary_color: #0d9ff4;
+$secondary_color: #f49e35;
 $light_grey: #F3F3F3;
+
 
 .navbar {
     width: 100%;
@@ -23,11 +24,12 @@ $light_grey: #F3F3F3;
 
     .nav-container {
         width: $desktop_width;
-        height: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        height: 100%;
+
 
         .nav-logo {
             text-align: center;

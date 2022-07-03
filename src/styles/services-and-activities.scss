@@ -1,9 +1,3 @@
-// Variables
-$desktop_width: 1200px;
-$primary_color: #48a1e5;
-$secondary_color: #f09f25;
-$light_grey: #F3F3F3;
-
 .saa-s {
     .saa-landing{
         background-image: url("../images/services-and-activities/bgs.jpg");
@@ -30,7 +24,7 @@ $light_grey: #F3F3F3;
         flex-direction: column;
         color: white;
         z-index: 0;
-        padding: 30px;
+        padding: 70px;
 
         .saa-darken {
             background-color: rgba($color: #081119, $alpha: 0.7);
@@ -81,10 +75,10 @@ $light_grey: #F3F3F3;
                 overflow: hidden;
 
 
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
+                // img {
+                //     width: 100%;
+                //     height: 100%;
+                // }
             }
 
             .item-text-cont {
@@ -112,6 +106,7 @@ $light_grey: #F3F3F3;
 @media (max-width: 1060px) {
     .saa-container {
         .saa-landing {
+            padding: 80px;
             .saa-title-main{
                 font-size: 2.9rem;
             }
@@ -156,6 +151,7 @@ $light_grey: #F3F3F3;
 @media (max-width: 620px) {
     .saa-container {
         .saa-landing {
+            padding: 40px;
             .saa-title-main{
                 font-size: 2.1rem;
             }

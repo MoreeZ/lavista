@@ -42,7 +42,7 @@ export default function Navbar() {
     }
   }, []);
 
-  const {logoImages} = useStaticQuery(graphql`
+  const { logoImages } = useStaticQuery(graphql`
     query LogoQuery {
       logoImages: allFile(
         filter: {relativeDirectory: {eq: "navbar"}}
@@ -53,7 +53,7 @@ export default function Navbar() {
             relativePath
             childImageSharp {
                 gatsbyImageData(
-                    height: 65
+                    height: 70
                     placeholder: BLURRED
                     formats: [AUTO, WEBP, AVIF]
                 )
@@ -84,9 +84,13 @@ export default function Navbar() {
       <div className='nav-container'>
         <div className='nav-left'>
           {windowWidth > 800 ?
-            <Link to='/' className='nav-logo'>
-              <GatsbyImage image={logoImages.edges[0].node.childImageSharp.gatsbyImageData} alt="La Vista" />
-              </Link>
+            <Link to='/' className='nav-logo' style={{ height: "100%" }}>
+              <GatsbyImage
+                image={logoImages.edges[0].node.childImageSharp.gatsbyImageData}
+                alt="La Vista"
+                imgStyle={{ height: "70px" }}
+              />
+            </Link>
             :
             <Hamburger size={30} color="white" toggle={setOpen} toggled={isOpen} />
 
@@ -94,16 +98,20 @@ export default function Navbar() {
         </div>
         <div className='nav-center'>
           {windowWidth <= 800 &&
-            <Link className='nav-logo' to='/'>
-              <GatsbyImage image={logoImages.edges[0].node.childImageSharp.gatsbyImageData} alt="La Vista" />
-              </Link>
+            <Link className='nav-logo' to='/' style={{ height: "100%" }}>
+              <GatsbyImage
+                image={logoImages.edges[0].node.childImageSharp.gatsbyImageData}
+                alt="La Vista"
+                imgStyle={{ height: "100%" }}
+              />
+            </Link>
           }
         </div>
         <div className='nav-right'>
           {windowWidth > 800 &&
             links && links.map((link, index) => (
               <div className='nav-link-box' key={index}>
-                <Link to={link.to === "" ? "/" : link.to} className={currentPath === link.to || currentPath === link.to + "/" ? "active-link" : ""}>
+                <Link to={link.to === "" ? "/" : link.to} className={currentPath === link.to || currentPath === link.to + "/" ? "active-link" : ""} onClick={() => { setOpen(false) }}>
                   {link.text}
                 </Link>
                 {link.dropdownList && link.dropdownList.map((link2, index) => (

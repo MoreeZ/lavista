@@ -197,7 +197,7 @@ const IndexPage = () => {
       }
     }
     return null;
-  }
+  } 
 
   return (
     <Layout hasNavbar hasFooter>
