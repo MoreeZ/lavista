@@ -13,10 +13,12 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "export": "gatsby build && firebase deploy",
     "exportd": "gatsby build && firebase deploy",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@netlify/plugin-gatsby": "^3.2.4",
     "aos": "^3.0.0-beta.6",
     "gatsby": "^4.16.0",
     "gatsby-plugin-image": "^2.17.0",
@@ -40,6 +42,7 @@
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "@types/react-slick": "^0.23.9",
+    "gatsby-plugin-netlify": "^5.0.0",
     "typescript": "^4.7.3"
   }
 }

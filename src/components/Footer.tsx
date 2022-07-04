@@ -1,6 +1,6 @@
 import * as React from 'react';
-import twitterIcon from '../images/twitter.svg';
-import instagramIcon from '../images/instagram.svg';
+import airbnbIcon from '../images/airbnb.svg';
+import tripadvisorIcon from '../images/tripadvisor.svg';
 import facebookIcon from '../images/facebook.svg';
 
 
@@ -16,8 +16,8 @@ export default function Footer(props: IFooterProps) {
         <a target="_blank" href="mailto:hello@lctutors.com">lavistacanoa@gmail.com</a>
         </div>
         <div className='icon-cont text'>
-          <img src={twitterIcon} />
-          <img src={instagramIcon} />
+          <img src={airbnbIcon} />
+          <img src={tripadvisorIcon} />
           <img src={facebookIcon} />
         </div>
         <hr color='white ' />
