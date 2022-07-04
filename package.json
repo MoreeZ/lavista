@@ -8,20 +8,19 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "serve": "gatsby build && gatsby serve",
     "export": "gatsby build && firebase deploy",
-    "exportd": "gatsby build && firebase deploy",
-    "typecheck": "tsc --noEmit"
+    "firebase": "gatsby build && firebase deploy",
+    "netlify": "git add . && git commit -m \"dynamic footer added\" && git push"
   },
   "dependencies": {
     "@netlify/plugin-gatsby": "^3.2.4",
     "aos": "^3.0.0-beta.6",
     "gatsby": "^4.16.0",
     "gatsby-plugin-image": "^2.17.0",
+    "gatsby-plugin-manifest": "^4.17.0",
+    "gatsby-plugin-offline": "^5.17.0",
     "gatsby-plugin-react-helmet": "^5.16.0",
     "gatsby-plugin-sass": "^5.16.0",
     "gatsby-plugin-sharp": "^4.17.0",

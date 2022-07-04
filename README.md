@@ -4,8 +4,8 @@
 <b>Main framework:</b> NodeJS, React, Gatsby, Typescript, Graphql <br/>
 <b>Styling and animations:</b> SASS, AOS <br/>
 <b>Version control:</b> Git, Github <br/>
-<b>Demo hosting:</b> Firebase <br/>
-<b>Deployment hosting:</b> Firebase <br/>
+<b>Demo hosting:</b> Firebase, Netlify <br/>
+<b>Deployment hosting:</b> Firebase? / Netlify? / Custom? <br/>
 <b>Domain provider:</b> N/A <br/>
 
 ### Downloads
@@ -39,6 +39,7 @@
 
 ### Usage
 - Development: `npm run start`
-- Build website only: `npm run build`
-- Preview build locally: `npm run serve`
-- Build the website and host it on firebase `npm run export`
+- Build the app and view it locally: `npm run serve`
+- Build the app and host it to firebase `npm run firebase`
+- Build the app and send it to netlify `npm run netlify`
+- Build the app and send it to the hosting server `npm run export`

@@ -1,32 +1,75 @@
 import * as React from 'react';
-import airbnbIcon from '../images/airbnb.svg';
-import tripadvisorIcon from '../images/tripadvisor.svg';
-import facebookIcon from '../images/facebook.svg';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 
-export interface IFooterProps {
-}
+const Footer = () => {
+  const { footerData, footerImages } = useStaticQuery(graphql`
+  query FooterQuery {
+    footerData: allDataJson(filter: {footerData: {location: {ne: null}}}) {
+      edges {
+        node {
+          footerData {
+            location
+            email
+            links
+            privacy
+            copyright
+          }
+        }
+      }
+    }
+    footerImages: allFile(filter: {relativeDirectory: {eq: "footer"}}) {
+      edges {
+        node {
+          relativePath
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, height: 100, width: 100)
+          }
+        }
+      }
+    }
+  }  
+  `)
 
-export default function Footer(props: IFooterProps) {
+  const { location, email, links, privacy, copyright } = footerData.edges[0].node.footerData;
+  console.log(footerImages.edges[0])
   return (
     <div className='footer scale-content-width'>
       <div className='footer-top'>
-        <div className='text'>Canoa, Ecuador</div>
+        <div className='text'>{location}</div>
         <div className='text'>
-        <a target="_blank" href="mailto:hello@lctutors.com">lavistacanoa@gmail.com</a>
+          <a target="_blank" href={"mailto:" + email}>{email}</a>
         </div>
         <div className='icon-cont text'>
-          <img src={airbnbIcon} />
-          <img src={tripadvisorIcon} />
-          <img src={facebookIcon} />
+          {
+            links && links.length > 0 && links.map((link: string, index: number) => {
+              return (
+                <Link to={link} target="_blank">
+                  <GatsbyImage
+                    image={footerImages.edges && footerImages.edges[index] &&
+                      footerImages.edges[index] !== null &&
+                      footerImages.edges[index].node.childImageSharp !== null &&
+                      footerImages.edges[index].node.childImageSharp.gatsbyImageData}
+                    alt={index.toString()}
+                  />
+                </Link>
+              )
+            })
+          }
         </div>
         <hr color='white ' />
       </div>
       <div className='footer-bottom'>
-        <div className='privacy-policy text'><a target="_blank" href='/#'>We care about your privacy.</a></div>
+        <div className='privacy-policy text'><a target="_blank" href='/'>
+          {privacy}
+        </a></div>
         <div className='copyright'>
-Copyright ©2022 La Vista Canoa Hotel - lavistacanoa@gmail.com</div>
+          {copyright}  
+        </div>
       </div>
     </div>
   );
 }
+
+export default Footer;
