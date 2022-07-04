@@ -96,7 +96,7 @@ const Contact = () => {
 
   return (
     <Layout hasNavbar hasFooter backgroundColor={"#f0f2f7"}>
-      <SEO title="Reservation" />
+      <SEO title="Easy and Fast Reservations" />
       <div className="res-container scale-content-width">
         <div className='res-websites-cont block-content-width' >
           <h1 className='res-title'>{reservationSites.title}</h1>

@@ -27,7 +27,7 @@ const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: 
 
   return (
     <div className={'saa-container scale-content-width saa-' + props.imageExt}>
-      <SEO title="Services" />
+      <SEO title="Hammocks, Swimming pool, Beach" />
       <div className='saa-landing block-content-width'>
         <h1 className='saa-title-main' data-aos="fade-up">{props.saaData.title}</h1>
         <h2 className='saa-desc-main' data-aos="fade-up">{props.saaData.description}</h2>

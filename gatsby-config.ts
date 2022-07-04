@@ -2,8 +2,8 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: "La Vista Hotel",
-    titleTemplate: "%s · La Vista",
+    title: "La Vista Hotel Canoa",
+    titleTemplate: "La Vista Hotel Canoa: %s",
     description: "Experience wonderful views, delicious food and outstanding comfort at the heart of Canoa village with La Vista hotel.",
     url: "https://www.lavistacanoa.com", // No trailing slash allowed!
     image: "/icon.jpg", // Path to the image placed in the 'static' folder, in the project's root directory.

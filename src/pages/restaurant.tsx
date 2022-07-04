@@ -27,7 +27,7 @@ const Details = (props: { details: DetailsType }) => {
     console.log(props.details);
     return (
         <div className="restaurant-screen scale-content-width">
-            <SEO title="Restaurant" />
+            <SEO title="Best Hotel Restraurant, Canoa" />
             <div className="restaurant-container">
                 <h1 className="heading" data-aos="fade-up">
                     {props.details && props.details.title && props.details.title}
