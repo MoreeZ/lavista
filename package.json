@@ -12,7 +12,7 @@
     "serve": "gatsby build && gatsby serve",
     "export": "gatsby build && firebase deploy",
     "firebase": "gatsby build && firebase deploy",
-    "netlify": "git add . && git commit -m \"dynamic footer added\" && git push"
+    "netlify": "git add . && git commit -m \"minor changes for netlify hosting\" && git push"
   },
   "dependencies": {
     "@netlify/plugin-gatsby": "^3.2.4",

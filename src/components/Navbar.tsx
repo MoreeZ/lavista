@@ -64,8 +64,6 @@ export default function Navbar() {
     }
   `)
 
-  console.log(logoImages)
-
   useEffect(() => {
     const htmlElem = document.querySelector('html');
     const dropdown = document.getElementById('nav-dropdown');
