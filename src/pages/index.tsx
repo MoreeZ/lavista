@@ -205,7 +205,7 @@ const IndexPage = () => {
 
   return (
     <Layout hasNavbar hasFooter>
-      <SEO title={"Best Hotel in all of Canoa" + new Date().getFullYear()} />
+      <SEO title={"Best Hotel in Canoa " + new Date().getFullYear()} />
       <WelcomeBlock data={homeData.edges[0].node.landing} />
       <RoomsBlock data={homeData.edges[0].node.ourRooms} image={getImageFromPath("home/rooms")} />
       <AboutUsBlock data={homeData.edges[0].node.aboutUs} />

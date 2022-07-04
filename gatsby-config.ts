@@ -4,7 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: "La Vista Hotel Canoa",
     titleTemplate: "La Vista Hotel Canoa: %s",
-    description: "Experience wonderful views, delicious food and outstanding comfort at the heart of Canoa village with La Vista hotel.",
+    description: "50 meter walk from the beach. Newly renovated. Unmatched comfort, wonderful views and delicious food at the heart of Canoa, Ecuador. Relax and forget about your problems with La Vista Hotel Ecuador.",
     url: "https://www.lavistacanoa.com", // No trailing slash allowed!
     image: "/icon.jpg", // Path to the image placed in the 'static' folder, in the project's root directory.
     twitterUsername: "@OskarMoreeZ",
