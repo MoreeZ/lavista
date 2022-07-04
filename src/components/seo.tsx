@@ -22,8 +22,14 @@ const SEO = (props: { title: string, description: string, image: string, article
   }
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      <meta charSet="UTF-8" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+      <meta name="lang" content={seo.image} />
+      <meta name="robots" content="index, follow"/>
+      <meta http-equiv="refresh" content="0; url=$https://lavistacanoa.com" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
       {seo.url && <meta property="og:url" content={seo.url} />}
       {(props.article ? true : null) && <meta property="og:type" content="article" />}
       {seo.title && <meta property="og:title" content={seo.title} />}
