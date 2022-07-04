@@ -1,5 +1,6 @@
 import * as React from "react"
 import Layout from "../components/Layout"
+import SEO from "../components/seo";
 // import elephantDemo from '../images/elephant-demo.jpg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -197,10 +198,11 @@ const IndexPage = () => {
       }
     }
     return null;
-  } 
+  }
 
   return (
     <Layout hasNavbar hasFooter>
+      <SEO title="Home" />
       <WelcomeBlock data={homeData.edges[0].node.landing} />
       <RoomsBlock data={homeData.edges[0].node.ourRooms} image={getImageFromPath("home/rooms")} />
       <AboutUsBlock data={homeData.edges[0].node.aboutUs} />

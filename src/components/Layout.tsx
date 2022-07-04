@@ -10,7 +10,7 @@ export interface ILayoutProps {
 }
 
 export default function Layout(props: React.PropsWithChildren<ILayoutProps>) {
-  
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: props.backgroundColor }}>
       {props.hasNavbar && <Navbar />}

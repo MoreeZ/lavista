@@ -2,8 +2,12 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `La Vista Hotel`,
-    siteUrl: `https://www.lavistacanoa.com`
+    title: "La Vista Hotel",
+    titleTemplate: "%s · La Vista",
+    description: "Experience wonderful views, delicious food and outstanding comfort at the heart of Canoa village with La Vista hotel.",
+    url: "https://www.lavistacanoa.com", // No trailing slash allowed!
+    image: "/icon.jpg", // Path to the image placed in the 'static' folder, in the project's root directory.
+    twitterUsername: "@OskarMoreeZ",
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -50,6 +54,7 @@ const config: GatsbyConfig = {
       precachePages: [`/`, '/rooms/', '/restaurant/', '/services-and-activities/', '/reservation/'],
     },
   },
+  'gatsby-plugin-react-helmet'
 ]
 };
 

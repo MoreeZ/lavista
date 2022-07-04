@@ -3,6 +3,7 @@ import * as React from 'react';
 import Layout from '../components/Layout';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import SEO from '../components/seo';
 
 type DetailsType = {
     title: string,
@@ -26,6 +27,7 @@ const Details = (props: { details: DetailsType }) => {
     console.log(props.details);
     return (
         <div className="restaurant-screen scale-content-width">
+            <SEO title="Restaurant" />
             <div className="restaurant-container">
                 <div className="heading" data-aos="fade-up">
                     {props.details && props.details.title && props.details.title}

@@ -12,6 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import Layout from '../components/Layout';
+import SEO from '../components/seo';
 
 type ButtonType = {
     text: string,
@@ -222,6 +223,7 @@ const Rooms = () => {
 
     return (
         <Layout hasNavbar hasFooter backgroundColor={"#f0f2f7"}>
+            <SEO title="Rooms" />
             <ImageCarousel carouselImages={carouselImages} path={"rooms/swiper_"} />
             {
                 roomsData && roomsData.edges[0] && roomsData.edges[0] !== null && roomsData.edges[0].node.availableRooms.map((eachRoom: any, index: number) => (

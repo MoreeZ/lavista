@@ -2,20 +2,21 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import * as React from 'react';
 import Layout from '../components/Layout';
+import SEO from '../components/seo';
 
 type BasicDataType = {
-    title: string,
-    description: string,
-    button: ButtonType
+  title: string,
+  description: string,
+  button: ButtonType
 }
 
 type ButtonType = {
-    text: string,
-    link: string
+  text: string,
+  link: string
 }
 
 const Contact = () => {
-    const { resData, websiteImages, bgImages } = useStaticQuery(graphql`
+  const { resData, websiteImages, bgImages } = useStaticQuery(graphql`
     query ReservationQuery {
         resData: allDataJson(filter: {reservationSites: {title: {ne: null}}}) {
           edges {
@@ -82,54 +83,55 @@ const Contact = () => {
           }
       }      
   `)
-    const { reservationSites, contactSection, locationSection } = resData.edges[0].node;
+  const { reservationSites, contactSection, locationSection } = resData.edges[0].node;
 
-    const sortedImages = websiteImages.edges
-        .sort((edge: any, edge2: any) => (edge.node.relativePath > edge2.node.relativePath));
+  const sortedImages = websiteImages.edges
+    .sort((edge: any, edge2: any) => (edge.node.relativePath > edge2.node.relativePath));
 
-    return (
-        <Layout hasNavbar hasFooter>
-            <div className="res-container scale-content-width">
-                <div className='res-websites-cont block-content-width' >
-                    <div className='res-title'>{reservationSites.title}</div>
-                    <div className='res-render-space'>
-                        {reservationSites && reservationSites.itemList !== null && reservationSites.itemList.length > 0 &&
-                            reservationSites.itemList.map((item: BasicDataType, index: number) => {
-                                return (
-                                    <div className='each-item' key={index}>
-                                        <div className='image-container'>
-                                            <GatsbyImage className='item-image' image={sortedImages && sortedImages[index] && sortedImages[index].node.childImageSharp.gatsbyImageData} alt={item.title + " image"} />
-                                            <div className='image-mask' />
-                                        </div>
-                                        <div className='item-title'>{item.title}</div>
-                                        <div className='item-desc'>{item.description}</div>
-                                        <Link target="_blank" to={item.button.link} className='item-button btn btn-large'>{item.button.text}</Link>
-                                    </div>
-                                )
-                            })}
+  return (
+    <Layout hasNavbar hasFooter backgroundColor={"#f0f2f7"}>
+      <SEO title="Reservation" />
+      <div className="res-container scale-content-width">
+        <div className='res-websites-cont block-content-width' >
+          <div className='res-title'>{reservationSites.title}</div>
+          <div className='res-render-space'>
+            {reservationSites && reservationSites.itemList !== null && reservationSites.itemList.length > 0 &&
+              reservationSites.itemList.map((item: BasicDataType, index: number) => {
+                return (
+                  <div className='each-item' key={index}>
+                    <div className='image-container'>
+                      <GatsbyImage className='item-image' image={sortedImages && sortedImages[index] && sortedImages[index].node.childImageSharp.gatsbyImageData} alt={item.title + " image"} />
+                      <div className='image-mask' />
                     </div>
-                </div>
-                <div className="res-contact scale-content-width">
-                    <div className="heading">{contactSection.title}</div>
-                    <div className='phone-cont each-contact'>
-                        <div className='tag'>Phone: </div>
-                        <div className='value'>{contactSection.phone}</div>
-                    </div>
-                    <div className='email-cont each-contact'>
-                        <div className='tag'>Email: </div>
-                        <a href={"mailto:" + contactSection.email} className='value'>{contactSection.email}</a>
-                    </div>
-                    <div className='bg-darken'/>
-                </div>
-                <div className="res-location scale-content-width">
-                    <div className="heading">{locationSection.title}</div>
-                    <div className="map-wrapper">
-                        <iframe src={locationSection.iframe.src} width={locationSection.iframe.width} height={locationSection.iframe.height} loading={locationSection.iframe.loading}></iframe>
-                    </div>
-                </div>
-            </div>
-        </Layout>
-    );
+                    <div className='item-title'>{item.title}</div>
+                    <div className='item-desc'>{item.description}</div>
+                    <Link target="_blank" to={item.button.link} className='item-button btn btn-large'>{item.button.text}</Link>
+                  </div>
+                )
+              })}
+          </div>
+        </div>
+        <div className="res-contact scale-content-width">
+          <div className="heading">{contactSection.title}</div>
+          <div className='phone-cont each-contact'>
+            <div className='tag'>Phone: </div>
+            <div className='value'>{contactSection.phone}</div>
+          </div>
+          <div className='email-cont each-contact'>
+            <div className='tag'>Email: </div>
+            <a href={"mailto:" + contactSection.email} className='value'>{contactSection.email}</a>
+          </div>
+          <div className='bg-darken' />
+        </div>
+        <div className="res-location scale-content-width">
+          <div className="heading">{locationSection.title}</div>
+          <div className="map-wrapper">
+            <iframe src={locationSection.iframe.src} width={locationSection.iframe.width} height={locationSection.iframe.height} loading={locationSection.iframe.loading}></iframe>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
 }
 
 export default Contact;

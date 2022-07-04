@@ -4,6 +4,7 @@ import * as React from 'react';
 import Layout from '../components/Layout';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import SEO from '../components/seo';
 
 export interface IResourcesProps {
 }
@@ -26,6 +27,7 @@ const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: 
 
   return (
     <div className={'saa-container scale-content-width saa-' + props.imageExt}>
+      <SEO title="Services" />
       <div className='saa-landing block-content-width'>
         <div className='saa-title-main' data-aos="fade-up">{props.saaData.title}</div>
         <div className='saa-desc-main' data-aos="fade-up">{props.saaData.description}</div>
