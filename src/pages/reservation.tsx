@@ -49,7 +49,10 @@ const Contact = () => {
             }
           }
         }
-        websiteImages: allFile(filter: {relativeDirectory: {eq: "reservation"}, relativePath: {regex: "/w_/"}}) {
+        websiteImages: allFile(
+          filter: {relativeDirectory: {eq: "reservation"}, relativePath: {regex: "/w_/"}}
+          sort: {fields: relativePath, order: ASC}
+          ) {
             edges {
               node {
                 relativePath
@@ -65,7 +68,10 @@ const Contact = () => {
               }
             }
           }
-          bgImages: allFile(filter: {relativeDirectory: {eq: "reservation"}, relativePath: {regex: "/bg/"}}) {
+          bgImages: allFile(
+            filter: {relativeDirectory: {eq: "reservation"}, relativePath: {regex: "/bg/"}}
+            sort: {fields: relativePath, order: ASC}
+            ) {
             edges {
               node {
                 relativePath

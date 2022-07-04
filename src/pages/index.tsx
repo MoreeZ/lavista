@@ -168,7 +168,10 @@ const IndexPage = () => {
         }
       }
     }
-    homeImages: allFile(filter: {relativeDirectory: {eq: "home"}}) {
+    homeImages: allFile(
+      filter: {relativeDirectory: {eq: "home"}}
+      sort: {fields: relativePath, order: ASC}
+    ) {
       edges {
         node {
           relativePath

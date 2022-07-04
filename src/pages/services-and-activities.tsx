@@ -95,6 +95,7 @@ const ServicesAndActivities = (props: IResourcesProps) => {
           }
           saaImages: allFile(
             filter: {relativeDirectory: {eq: "services-and-activities"}}
+            sort: {fields: relativePath, order: ASC}
           ) {
             totalCount
             edges {

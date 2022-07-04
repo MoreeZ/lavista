@@ -19,12 +19,15 @@ const Footer = () => {
         }
       }
     }
-    footerImages: allFile(filter: {relativeDirectory: {eq: "footer"}}) {
+    footerImages: allFile(
+      filter: {relativeDirectory: {eq: "footer"}}
+      sort: {fields: relativePath, order: ASC}
+    ) {
       edges {
         node {
           relativePath
           childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, height: 100, width: 100)
+            gatsbyImageData(placeholder: BLURRED, height: 50, width: 50, aspectRatio: 1)
           }
         }
       }

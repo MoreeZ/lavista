@@ -177,6 +177,7 @@ const Rooms = () => {
         }
         carouselImages: allFile(
           filter: {relativeDirectory: {eq: "rooms"}, relativePath: {regex: "/swiper/"}}
+          sort: {fields: relativePath, order: ASC}
         ) {
           totalCount
           edges {
@@ -196,6 +197,7 @@ const Rooms = () => {
         }
         roomImages: allFile(
           filter: {relativeDirectory: {eq: "rooms"}, relativePath: {regex: "/^((?!main).)*$/"}}
+          sort: {fields: relativePath, order: ASC}
         ) {
           totalCount
           edges {
