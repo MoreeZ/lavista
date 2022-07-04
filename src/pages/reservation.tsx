@@ -99,17 +99,17 @@ const Contact = () => {
       <SEO title="Reservation" />
       <div className="res-container scale-content-width">
         <div className='res-websites-cont block-content-width' >
-          <div className='res-title'>{reservationSites.title}</div>
+          <h1 className='res-title'>{reservationSites.title}</h1>
           <div className='res-render-space'>
             {reservationSites && reservationSites.itemList !== null && reservationSites.itemList.length > 0 &&
               reservationSites.itemList.map((item: BasicDataType, index: number) => {
                 return (
                   <div className='each-item' key={index}>
                     <div className='image-container'>
-                      <GatsbyImage className='item-image' image={sortedImages && sortedImages[index] && sortedImages[index].node.childImageSharp.gatsbyImageData} alt={item.title + " image"} />
+                      <GatsbyImage className='item-image' image={sortedImages && sortedImages[index] && sortedImages[index].node.childImageSharp.gatsbyImageData} alt={item.title + " image La Vista Canoa"} />
                       <div className='image-mask' />
                     </div>
-                    <div className='item-title'>{item.title}</div>
+                    <h3 className='item-title'>{item.title}</h3>
                     <div className='item-desc'>{item.description}</div>
                     <Link target="_blank" to={item.button.link} className='item-button btn btn-large'>{item.button.text}</Link>
                   </div>
@@ -118,7 +118,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="res-contact scale-content-width">
-          <div className="heading">{contactSection.title}</div>
+          <h1 className="heading">{contactSection.title}</h1>
           <div className='phone-cont each-contact'>
             <div className='tag'>Phone: </div>
             <div className='value'>{contactSection.phone}</div>
@@ -130,7 +130,7 @@ const Contact = () => {
           <div className='bg-darken' />
         </div>
         <div className="res-location scale-content-width">
-          <div className="heading">{locationSection.title}</div>
+          <h1 className="heading">{locationSection.title}</h1>
           <div className="map-wrapper">
             <iframe src={locationSection.iframe.src} width={locationSection.iframe.width} height={locationSection.iframe.height} loading={locationSection.iframe.loading}></iframe>
           </div>

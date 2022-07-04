@@ -38,8 +38,8 @@ const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
                     {/* <div className='heading'>More Images</div> */}
                     <div className='carousel-render-space'>
                         <div className='text-space block-content-width'>
-                            <div className='heading' data-aos="fade-up">Our Rooms</div>
-                            <div className='subheading' data-aos="fade-up" data-aos-delay="200">All of our rooms provide direct views to the beach and the town of Canoa. Each room is equipped with a private bathroom, television, and airconditioning. The rooms are cleaned daily and fresh linen is provided everyday.</div>
+                            <h1 className='heading' data-aos="fade-up">Our Rooms</h1>
+                            <h2 className='subheading' data-aos="fade-up" data-aos-delay="200">All of our rooms provide direct views to the beach and the town of Canoa. Each room is equipped with a private bathroom, television, and airconditioning. The rooms are cleaned daily and fresh linen is provided everyday.</h2>
                         </div>
                         <Swiper
                             modules={[Autoplay]}
@@ -53,7 +53,7 @@ const ImageCarousel = (props: { carouselImages: any | null, path: string }) => {
                                     return (
                                         <SwiperSlide key={index} className='image-container'>
                                             <div className=''>
-                                                <GatsbyImage key={index} image={edge.node.childImageSharp.gatsbyImageData} alt={"showcase"} />
+                                                <GatsbyImage key={index} image={edge.node.childImageSharp.gatsbyImageData} alt={"Room image La Vista Canoa"} />
                                             </div>
                                         </SwiperSlide>
                                     )
@@ -74,7 +74,7 @@ const EachRoom = (props: { data: RoomType, index: number, reverse: boolean, room
             <div className='scale-content-width' style={{ backgroundColor: "white" }}>
                 <div className={'room-container'}>
                     <div className={"room-left"}>
-                        <div className='room-heading' data-aos="fade-right">{props.data.title}</div>
+                        <h3 className='room-heading' data-aos="fade-right">{props.data.title}</h3>
                         <div className='room-price' data-aos="fade-right">Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
                         <div className='utilities-container' data-aos="fade-right">{
                             props.data.utilities && props.data.utilities.map((util) => {
@@ -97,7 +97,7 @@ const EachRoom = (props: { data: RoomType, index: number, reverse: boolean, room
             <div className='scale-content-width' style={{ backgroundColor: "white" }}>
                 <div className={'room-container room-container-reverse'}>
                     <div className={"room-left"}>
-                        <div className='room-heading' data-aos="fade-left" >{props.data.title}</div>
+                        <h3 className='room-heading' data-aos="fade-left" >{props.data.title}</h3>
                         <div className='room-price' data-aos="fade-left" >Price per night:&nbsp;&nbsp;<span>{props.data.price}</span></div>
                         <div className='utilities-container' data-aos="fade-left">{
                             props.data.utilities && props.data.utilities.map((util) => {

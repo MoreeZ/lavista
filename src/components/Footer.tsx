@@ -50,7 +50,7 @@ const Footer = () => {
           {
             links && links.length > 0 && links.map((link: string, index: number) => {
               return (
-                <Link to={link} target="_blank">
+                <a href={link} target="_blank">
                   <GatsbyImage
                     image={filteredImages && filteredImages[index] &&
                       filteredImages[index] !== null &&
@@ -58,7 +58,7 @@ const Footer = () => {
                       filteredImages[index].node.childImageSharp.gatsbyImageData}
                     alt={index.toString()}
                   />
-                </Link>
+                </a>
               )
             })
           }

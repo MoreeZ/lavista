@@ -29,18 +29,18 @@ const Details = (props: { details: DetailsType }) => {
         <div className="restaurant-screen scale-content-width">
             <SEO title="Restaurant" />
             <div className="restaurant-container">
-                <div className="heading" data-aos="fade-up">
+                <h1 className="heading" data-aos="fade-up">
                     {props.details && props.details.title && props.details.title}
-                </div>
-                <div className="subheading" data-aos="fade-up" data-aos-delay="200">
+                </h1>
+                <h2 className="subheading" data-aos="fade-up" data-aos-delay="200">
                     {props.details && props.details.description_main && props.details.description_main}
-                </div>
-                <div className="subheading2" data-aos="fade-up" data-aos-delay="300">
+                </h2>
+                <h4 className="subheading2" data-aos="fade-up" data-aos-delay="300">
                     {props.details && props.details.description_par1 && props.details.description_par1}
-                </div>
-                <div className="subheading2" data-aos="fade-up" data-aos-delay="400">
+                </h4>
+                <h4 className="subheading2" data-aos="fade-up" data-aos-delay="400">
                     {props.details && props.details.description_par2 && props.details.description_par2}
-                </div>
+                </h4>
             </div>
             <div className="restaurant-darken"></div>
         </div>
@@ -50,13 +50,13 @@ const Details = (props: { details: DetailsType }) => {
 const Menu = (props: { menu: MenuType[] }) => {
     return (
         <div className='menu-container scale-content-width'>
-            <div className='menu-heading'>Menu</div>
+            <h3 className='menu-heading'>Menu</h3>
             <div className='menu-render-space block-content-width'>
                 {
                     props.menu.map((submenu, index) => {
                         return (
                             <div className='each-submenu' data-aos="fade-up" key={index}>
-                                <div className='submenu-heading'>{submenu.subheading}</div>
+                                <h4 className='submenu-heading'>{submenu.subheading}</h4>
                                 <table className='submenu-render-space'>
                                     <tr>
                                         <th>Dish</th>

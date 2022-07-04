@@ -28,12 +28,12 @@ type ButtonType = {
 const WelcomeBlock = (props: { data: BasicDataType }) => (
   <div className="welcome-screen scale-content-width">
     <div className="content-container">
-      <div className="heading" data-aos="fade-up">
+      <h1 className="heading" data-aos="fade-up">
         {props.data && props.data.title && props.data.title}
-      </div>
-      <div className="subheading" data-aos="fade-up" data-aos-delay="200">
+      </h1>
+      <h2 className="subheading" data-aos="fade-up" data-aos-delay="200">
         {props.data && props.data.description && props.data.description !== null && props.data.description}
-      </div>
+      </h2>
       <Link target="_blank" to={props.data.button.link} className="btn btn-large btn-secondary" data-aos="fade-up" data-aos-delay="400">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
     </div>
     <div className="welcome-darken"></div>
@@ -44,12 +44,12 @@ const RoomsBlock = (props: { data: BasicDataType, image: IGatsbyImageData }) => 
   <div className='scale-content-width'>
     <div className="block-content-width rm-container">
       <div className="rm-left">
-        <div className='rm-heading' data-aos="fade-right">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
-        <div className='rm-desc' data-aos="fade-right">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
+        <h2 className='rm-heading' data-aos="fade-right">{props.data && props.data.title && props.data.title !== null && props.data.title}</h2>
+        <h3 className='rm-desc' data-aos="fade-right">{props.data && props.data.description && props.data.description !== null && props.data.description}</h3>
         <Link target="_blank" to={props.data.button.link} className="rm-button btn btn-large" data-aos="fade-right">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
       </div>
       <div className="rm-right" data-aos="fade-left">
-        <GatsbyImage image={props.image} alt={"Rooms image unavailable..."} />
+        <GatsbyImage image={props.image} alt={"Rooms image La Vista Hotel Canoa"} />
       </div>
     </div>
   </div>
@@ -58,8 +58,8 @@ const RoomsBlock = (props: { data: BasicDataType, image: IGatsbyImageData }) => 
 const AboutUsBlock = (props: { data: BasicDataType }) => (
   <div className='scale-content-width au-container'>
     <div className="block-content-width au-content">
-      <div className="au-heading" data-aos="fade-up">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
-      <div className="au-desc" data-aos="fade-up">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
+      <h2 className="au-heading" data-aos="fade-up">{props.data && props.data.title && props.data.title !== null && props.data.title}</h2>
+      <h3 className="au-desc" data-aos="fade-up">{props.data && props.data.description && props.data.description !== null && props.data.description}</h3>
       <Link target="_blank" to={props.data.button.link} className="au-button btn btn-secondary btn-large" data-aos="fade-up">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
     </div>
   </div>
@@ -69,11 +69,11 @@ const AboutUsBlock = (props: { data: BasicDataType }) => (
 const FacilitiesBlock = (props: { data: BasicDataType, image: IGatsbyImageData }) => (
   <div className='scale-content-width rsc-container'>
     <div className="rsc-left" data-aos="fade-right">
-      <GatsbyImage image={props.image} alt={"Facilities image unavailable..."} />
+      <GatsbyImage image={props.image} alt={"Facilities image La Vista Hotel Canoa"} />
     </div>
     <div className="rsc-right">
-      <div className='rsc-heading' data-aos="fade-left">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
-      <div className='rsc-desc' data-aos="fade-left">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
+      <h2 className='rsc-heading' data-aos="fade-left">{props.data && props.data.title && props.data.title !== null && props.data.title}</h2>
+      <h3 className='rsc-desc' data-aos="fade-left">{props.data && props.data.description && props.data.description !== null && props.data.description}</h3>
       <Link target="_blank" to={props.data.button.link} className="rsc-button btn btn-large" data-aos="fade-left">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
     </div>
   </div>
@@ -82,27 +82,27 @@ const FacilitiesBlock = (props: { data: BasicDataType, image: IGatsbyImageData }
 const RestaurantBlock = (props: { data: BasicDataType, image: IGatsbyImageData }) => (
   <div className="scale-content-width of-container ">
     <div className="of-left">
-      <div className='of-heading' data-aos="fade-right">{props.data && props.data.title && props.data.title !== null && props.data.title}</div>
-      <div className='of-desc' data-aos="fade-right">{props.data && props.data.description && props.data.description !== null && props.data.description}</div>
+      <h2 className='of-heading' data-aos="fade-right">{props.data && props.data.title && props.data.title !== null && props.data.title}</h2>
+      <h3 className='of-desc' data-aos="fade-right">{props.data && props.data.description && props.data.description !== null && props.data.description}</h3>
       <Link target="_blank" to={props.data.button.link} className="of-button btn btn-large" data-aos="fade-right">{props.data && props.data.button.text && props.data.button.text !== null && props.data.button.text}</Link>
     </div>
     <div className="of-right" data-aos="fade-left">
-      <GatsbyImage image={props.image} alt={"Restaurant image unavailable..."} />
+      <GatsbyImage image={props.image} alt={"Restaurant image La Vista Hotel Canoa"} />
     </div>
   </div>
 )
 
 const ContactUsBlock = (props: { data: ContactDataType }) => (
   <form className="scale-content-width contact-container">
-    <div className="header" data-aos="fade-up">
+    <h2 className="header" data-aos="fade-up">
       {props.data && props.data.title && props.data.title !== null && props.data.title}
-    </div>
+    </h2>
     <div className="text-contacts" data-aos="fade-up">
       {props.data && props.data.textContact && props.data.textContact !== null && props.data.textContact.map((txt) => (<div key={txt} className="text-contact">{txt}</div>))}
     </div>
-    <div className="subheading" data-aos="fade-up">
+    <h4 className="subheading" data-aos="fade-up">
       {props.data && props.data.subheading && props.data.subheading !== null && props.data.subheading}
-    </div>
+    </h4>
     <div className="ib-row" data-aos="fade-up">
       {props.data && props.data.buttons && props.data.buttons !== null && props.data.buttons.map((btnObj) => (<Link target="_blank" key={btnObj.text} className="ib-row btn btn-large btn-secondary" data-aos="fade-up" to={btnObj.link}>{btnObj.text && btnObj.text}</Link>))}
     </div>

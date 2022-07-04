@@ -29,8 +29,8 @@ const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: 
     <div className={'saa-container scale-content-width saa-' + props.imageExt}>
       <SEO title="Services" />
       <div className='saa-landing block-content-width'>
-        <div className='saa-title-main' data-aos="fade-up">{props.saaData.title}</div>
-        <div className='saa-desc-main' data-aos="fade-up">{props.saaData.description}</div>
+        <h1 className='saa-title-main' data-aos="fade-up">{props.saaData.title}</h1>
+        <h2 className='saa-desc-main' data-aos="fade-up">{props.saaData.description}</h2>
         <div className='saa-darken' />
       </div>
       <div className='saa-render-space block-content-width'>
@@ -41,7 +41,7 @@ const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: 
               <div className='each-item' key={index} data-aos="fade-in" aos-data-delay={(index * 200)} >
                 <div className='item-image-cont'>
                   <GatsbyImage
-                    alt={"image " + index}
+                    alt={"Services and activities La Vista Canoa"}
                     image={
                       filteredImages[index] &&
                       filteredImages[index] !== null &&
@@ -56,8 +56,8 @@ const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: 
                   />
                 </div>
                 <div className='item-text-cont'>
-                  <div className='item-title'>{item.title}</div>
-                  <div className='item-description'>{item.description}</div>
+                  <h3 className='item-title'>{item.title}</h3>
+                  <h4 className='item-description'>{item.description}</h4>
                 </div>
               </div>
             )
