@@ -27,7 +27,6 @@ const SEO = (props: { title: string, description: string, image: string, article
       <meta name="image" content={seo.image} />
       <meta http-equiv="content-language" content="en-us"/>
       <meta name="robots" content="index, follow"/>
-      <meta http-equiv="refresh" content="0; url=$https://lavistacanoa.com" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
       {seo.url && <meta property="og:url" content={seo.url} />}
