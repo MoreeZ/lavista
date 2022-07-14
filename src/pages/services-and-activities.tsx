@@ -6,20 +6,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import SEO from '../components/seo';
 
-export interface IResourcesProps {
-}
-
-type TitleDescElemType = {
-  title: string,
-  description: string
-}
-
-type SAADataType = {
-  title: string,
-  description: string,
-  itemList: TitleDescElemType[]
-}
-
 const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: any, imageNotFound: IGatsbyImageData }) => {
   const filteredImages = props.saaImages.edges
     .filter(((edge: any) => (edge.node.relativePath.indexOf("services-and-activities/" + props.imageExt + "_") !== -1)))
@@ -68,7 +54,7 @@ const SaaSection = (props: { saaData: SAADataType, imageExt: string, saaImages: 
   )
 }
 
-const ServicesAndActivities = (props: IResourcesProps) => {
+const ServicesAndActivities = () => {
   const { saaData, saaImages, imgNotFoundData } = useStaticQuery(graphql`
     query SaaQuery {
         saaData: allDataJson (filter:{services:{title:{ne:null}}}){

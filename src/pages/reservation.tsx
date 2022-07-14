@@ -4,17 +4,6 @@ import * as React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 
-type BasicDataType = {
-  title: string,
-  description: string,
-  button: ButtonType
-}
-
-type ButtonType = {
-  text: string,
-  link: string
-}
-
 const Contact = () => {
   const { resData, websiteImages, bgImages } = useStaticQuery(graphql`
     query ReservationQuery {
@@ -53,40 +42,40 @@ const Contact = () => {
           filter: {relativeDirectory: {eq: "reservation"}, relativePath: {regex: "/w_/"}}
           sort: {fields: relativePath, order: ASC}
           ) {
-            edges {
-              node {
-                relativePath
-                childImageSharp {
-                  gatsbyImageData(
-                      width: 1200
-                      aspectRatio: 1.5
-                      placeholder: BLURRED
-                      transformOptions: {fit: COVER, cropFocus: CENTER}
-                      formats: [AUTO, WEBP, AVIF]
-                    )
-                }
+          edges {
+            node {
+              relativePath
+              childImageSharp {
+                gatsbyImageData(
+                    width: 1200
+                    aspectRatio: 1.5
+                    placeholder: BLURRED
+                    transformOptions: {fit: COVER, cropFocus: CENTER}
+                    formats: [AUTO, WEBP, AVIF]
+                  )
               }
             }
           }
-          bgImages: allFile(
-            filter: {relativeDirectory: {eq: "reservation"}, relativePath: {regex: "/bg/"}}
-            sort: {fields: relativePath, order: ASC}
-            ) {
-            edges {
-              node {
-                relativePath
-                childImageSharp {
-                  gatsbyImageData(
-                      width: 1920
-                      aspectRatio: 2.1
-                      placeholder: BLURRED
-                      transformOptions: {fit: COVER, cropFocus: CENTER}
-                      formats: [AUTO, WEBP, AVIF]
-                    )
-                }
+        }
+        bgImages: allFile(
+          filter: {relativeDirectory: {eq: "reservation"}, relativePath: {regex: "/bg/"}}
+          sort: {fields: relativePath, order: ASC}
+          ) {
+          edges {
+            node {
+              relativePath
+              childImageSharp {
+                gatsbyImageData(
+                    width: 1920
+                    aspectRatio: 2.1
+                    placeholder: BLURRED
+                    transformOptions: {fit: COVER, cropFocus: CENTER}
+                    formats: [AUTO, WEBP, AVIF]
+                  )
               }
             }
           }
+        }        
       }      
   `)
   const { reservationSites, contactSection, locationSection } = resData.edges[0].node;

@@ -6,24 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
-
-type BasicDataType = {
-  title: string,
-  description: string,
-  button: ButtonType
-}
-
-type ContactDataType = {
-  title: string,
-  textContact: string[],
-  subheading: string,
-  buttons: ButtonType[]
-}
-
-type ButtonType = {
-  text: string,
-  link: string
-}
+import ImageCarousel from "../components/ImageCarousel";
 
 const WelcomeBlock = (props: { data: BasicDataType }) => (
   <div className="welcome-screen scale-content-width">
@@ -111,7 +94,7 @@ const ContactUsBlock = (props: { data: ContactDataType }) => (
 
 const IndexPage = () => {
   // const homeData = {};
-  const { homeData, homeImages } = useStaticQuery(graphql`
+  const { homeData, homeImages, carouselImages } = useStaticQuery(graphql`
   query HomeQuery {
     homeData: allDataJson(filter: {landing: {title: {ne: null}}}) {
       edges {
@@ -181,6 +164,28 @@ const IndexPage = () => {
         }
       }
     }
+    carouselImages: allFile(
+      filter: {
+        relativeDirectory: {eq: "home"}
+        relativePath: {regex:"/bg/"}
+      }
+      sort: {fields: relativePath, order: ASC}
+    ) {
+      edges {
+        node {
+          relativePath
+          childImageSharp {
+            gatsbyImageData(
+              width: 1920
+              aspectRatio: 2.8
+              placeholder: BLURRED
+              transformOptions: {fit: COVER, cropFocus: ATTENTION}
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
+        }
+      }
+    }
   }  
   `)
 
@@ -206,7 +211,15 @@ const IndexPage = () => {
   return (
     <Layout hasNavbar hasFooter>
       <SEO title={"Best Hotel in Canoa " + new Date().getFullYear()} />
-      <WelcomeBlock data={homeData.edges[0].node.landing} />
+      {/* <WelcomeBlock data={homeData.edges[0].node.landing} /> */}
+      <ImageCarousel
+        carouselImages={carouselImages}
+        path={"home/bg_"}
+        heading={homeData.edges[0].node.landing.title}
+        subheading={homeData.edges[0].node.landing.description}
+        button={homeData.edges[0].node.landing.button}
+        large
+      />
       <RoomsBlock data={homeData.edges[0].node.ourRooms} image={getImageFromPath("home/rooms")} />
       <AboutUsBlock data={homeData.edges[0].node.aboutUs} />
       <FacilitiesBlock data={homeData.edges[0].node.itemOne} image={getImageFromPath("home/facilities")} />

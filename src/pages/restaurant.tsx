@@ -5,24 +5,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import SEO from '../components/seo';
 
-type DetailsType = {
-    title: string,
-    description_main: string,
-    description_par1: string,
-    description_par2: string
-}
-
-type DishType = {
-    name: string,
-    description: string,
-    price: string
-}
-
-type MenuType = {
-    subheading: string,
-    dishes: DishType[]
-}
-
 const Details = (props: { details: DetailsType }) => {
     console.log(props.details);
     return (
